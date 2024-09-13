@@ -83,7 +83,7 @@ namespace Defra.Trade.CatchCertificates.Api.Mappers
                 "GUERNSEY" => greatBritain,
                 "ISLE OF MAN" => greatBritain,
                 "JERSEY" => greatBritain,
-                "NORTHERN IRELAND" => greatBritain,
+                "NORTHERN IRELAND" => "[\"Northern Ireland\"]",
                 _ => null
             };
         }
