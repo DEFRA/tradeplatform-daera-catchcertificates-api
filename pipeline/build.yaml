@@ -60,6 +60,7 @@ extends:
     appName: $(APIName)
     appProject: TRS
     appInstanceNumber: $(nc-region-id)23
+    scr: GH
     buildProjects: |
       **/*Api.csproj
       **/*Tests.csproj
