@@ -1,0 +1,79 @@
+version: 0.0.1
+apimServiceName: "#{{ Environment.Name }}TRA#{{ nc-function-infrastructure }}#{{ nc-resource-apimanagement }}1001"
+apiVersionSets:
+  - id: trade-catch-certificate-outbound-api-dev
+    displayName: DAERA Fish Export Service Data - DEV
+    description: Development DAERA Fish Export Service Data API
+    versioningScheme: Segment
+  - id: trade-catch-certificate-outbound-api
+    displayName: DAERA Fish Export Service Data
+    description: DAERA Fish Export Service Data API
+    versioningScheme: Segment
+apis:
+  - name: trade-catch-certificate-outbound-api-v2-dev
+    type: http
+    displayName: DAERA Fish Export Service Data - DEV
+    description: This API provides a mechanism for Defra to share fish exports data with DAERA to improve the efficiency of the movement and inspection of fisheries products.
+    serviceUrl: https://defra.mock
+    openApiSpec: v2\swagger.json
+    policy: policies\outboundApiPolicy.xml
+    suffix: daera-fish-export-service-data/dev
+    subscriptionRequired: false
+    apiVersion: v2
+    apiVersionDescription: Version 2 DAERA Fish Export Service Data API DEV
+    apiVersionSetId: trade-catch-certificate-outbound-api-dev
+    products: trd-dev
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: false
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+  - name: trade-catch-certificate-outbound-api-v2
+    type: http
+    displayName: DAERA Fish Export Service Data
+    description: This API provides a mechanism for Defra to share fish exports data with DAERA to improve the efficiency of the movement and inspection of fisheries products.
+    serviceUrl: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1023.azurewebsites.net/"
+    openApiSpec: v2\swagger.json
+    policy: policies\outboundApiPolicy.xml
+    suffix: daera-fish-export-service-data
+    subscriptionRequired: false
+    apiVersion: v2
+    apiVersionDescription: Version 2 DAERA Fish Export Service Data API
+    apiVersionSetId: trade-catch-certificate-outbound-api
+    products: trd-prod
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: false
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+    dependsOn: trade-catch-certificate-outbound-api-v2-dev
+templateParameters:
+  - name: audience
+    value: "#{{ externalAPIMAudience }}"
+  - name: secondaryServiceUrl
+    value: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1223.azurewebsites.net/"
+  - name: aspClientId
+    reference:
+      keyVault:
+        id: "/subscriptions/#{{ subscriptionId }}/resourceGroups/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-resourcegroup }}1001/providers/Microsoft.KeyVault/vaults/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-keyvault }}1001"
+      secretName: "TRSWEBAS1003-OAuth-ClientId"
+  - name: roles
+    values:
+      roleTradeDaeraExternalRead: "#{{ roleTradeDaeraExternalRead }}"
+outputLocation: publish-templates
+linked: false
+baseFileName: trade-catch-certificate-outbound-api

@@ -1,0 +1,92 @@
+version: 0.0.1
+apimServiceName: "#{{ Environment.Name }}TRA#{{ nc-function-infrastructure }}#{{ nc-resource-apimanagement }}1002"
+apiVersionSets:
+  - id: trade-catch-certificate-internal-api-dev
+    displayName: Trade Catch Certificate Api DEV
+    description: Development Trade Catch Certificate APIs
+    versioningScheme: Segment
+  - id: trade-catch-certificate-internal-api
+    displayName: Trade Catch Certificate Api
+    description: Trade Catch Certificate Apis
+    versioningScheme: Segment
+apis:
+  - name: trade-catch-certificate-internal-api-v2-dev
+    type: http
+    displayName: Trade Catch Certificate Api DEV
+    description: Trade Catch Certificate Apis
+    serviceUrl: https://defra.mock
+    openApiSpec: v2-internal\swagger.json
+    policy: policies\internalApiGenericPolicy.xml
+    suffix: trade-catch-certificate-internal/dev
+    subscriptionRequired: true
+    apiVersion: 2-internal
+    apiVersionDescription: Version 2 Trade Catch Certificate DEV APIs
+    apiVersionSetId: trade-catch-certificate-internal-api-dev
+    products: trd-dev
+    operations:
+      CreateCatchCertificateCase:
+        policy: policies\apiPolicy204MockResponses.xml
+      CreateProcessingStatement:
+        policy: policies\apiPolicy204MockResponses.xml
+      CreateStorageDocument:
+        policy: policies\apiPolicy204MockResponses.xml
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: true
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+  - name: trade-catch-certificate-internal-api-v2
+    type: http
+    displayName: Trade Catch Certificate Api
+    description: Trade Catch Certificate Apis
+    serviceUrl: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1023.azurewebsites.net/"
+    openApiSpec: v2-internal\swagger.json
+    policy: policies\internalApiGenericPolicy.xml
+    suffix: trade-catch-certificate-internal
+    subscriptionRequired: true
+    apiVersion: 2-internal
+    apiVersionDescription: Trade Catch Certificate Live APIs
+    apiVersionSetId: trade-catch-certificate-internal-api
+    products: trd-prod
+    operations:
+      CreateCatchCertificateCase:
+        policy: policies\apiReadWrite.xml
+      CreateProcessingStatement:
+        policy: policies\apiReadWrite.xml
+      CreateStorageDocument:
+        policy: policies\apiReadWrite.xml
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: true
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
+    dependsOn: trade-catch-certificate-internal-api-v2-dev
+templateParameters:
+  - name: secondaryServiceUrl
+    value: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1223.azurewebsites.net/"
+  - name: aspClientId
+    reference:
+      keyVault:
+        id: "/subscriptions/#{{ subscriptionId }}/resourceGroups/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-resourcegroup }}1001/providers/Microsoft.KeyVault/vaults/#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-keyvault }}1001"
+      secretName: "TRSWEBAS1003-OAuth-ClientId"
+  - name: roles
+    values:
+      roleTradeCatchCertificateInternalRead: "#{{ roleTradeCatchCertificateInternalRead }}"
+      roleTradeCatchCertificateInternalUpdate: "#{{ roleTradeCatchCertificateInternalUpdate }}"
+outputLocation: publish-templates
+linked: false
+baseFileName: trade-catch-certificate-internal-api

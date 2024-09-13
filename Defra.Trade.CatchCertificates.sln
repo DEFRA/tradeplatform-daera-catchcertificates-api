@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pipeline", "pipeline", "{D70B3863-1F42-422F-B1D5-C472FD7A3587}"
+	ProjectSection(SolutionItems) = preProject
+		pipeline\build-outbound.yaml = pipeline\build-outbound.yaml
+		pipeline\build.yaml = pipeline\build.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{28CF5EC6-8FFD-4AEC-A4D9-69FA5A864763}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FAF91DE-0E4E-40A6-9285-670345202B2E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CONTRIBUTING.md = CONTRIBUTING.md
+		coverlet.settings = coverlet.settings
+		LICENSE = LICENSE
+		nuget.config = nuget.config
+		README.md = README.md
+		runTest.ps1 = runTest.ps1
+		SonarQube.Analysis.xml = SonarQube.Analysis.xml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.CatchCertificates.Api", "src\Defra.Trade.CatchCertificates.Api\Defra.Trade.CatchCertificates.Api.csproj", "{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E1793318-470A-4167-B4E3-3F35B29AB8FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.CatchCertificates.Api.IntegrationTests", "test\Defra.Trade.CatchCertificates.Api.IntegrationTests\Defra.Trade.CatchCertificates.Api.IntegrationTests.csproj", "{71A514FD-1122-4D49-AF8A-134DDB12D2B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defra.Trade.CatchCertificates.Api.Tests", "test\Defra.Trade.CatchCertificates.Api.Tests\Defra.Trade.CatchCertificates.Api.Tests.csproj", "{15D6D3EC-782D-4A27-A5B2-87E74002E18A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-config", "api-config", "{4A6EEC3C-02C2-4CE8-B5A8-94F213B31017}"
+	ProjectSection(SolutionItems) = preProject
+		api-config\trade-catch-certificate-internal-api.yml = api-config\trade-catch-certificate-internal-api.yml
+		api-config\trade-catch-certificate-outbound-api.yml = api-config\trade-catch-certificate-outbound-api.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "policies", "policies", "{FAC0BF86-EBFD-4805-92F6-C7A51DD0804F}"
+	ProjectSection(SolutionItems) = preProject
+		api-config\policies\apiPolicy200MockResponses.xml = api-config\policies\apiPolicy200MockResponses.xml
+		api-config\policies\apiPolicy204MockResponses.xml = api-config\policies\apiPolicy204MockResponses.xml
+		api-config\policies\apiRead.xml = api-config\policies\apiRead.xml
+		api-config\policies\apiReadWrite.xml = api-config\policies\apiReadWrite.xml
+		api-config\policies\internalApiGenericPolicy.xml = api-config\policies\internalApiGenericPolicy.xml
+		api-config\policies\outboundApiPolicy.xml = api-config\policies\outboundApiPolicy.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A514FD-1122-4D49-AF8A-134DDB12D2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A514FD-1122-4D49-AF8A-134DDB12D2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A514FD-1122-4D49-AF8A-134DDB12D2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A514FD-1122-4D49-AF8A-134DDB12D2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D6D3EC-782D-4A27-A5B2-87E74002E18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D6D3EC-782D-4A27-A5B2-87E74002E18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D6D3EC-782D-4A27-A5B2-87E74002E18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D6D3EC-782D-4A27-A5B2-87E74002E18A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDEB2ECF-7BE3-493D-A805-12BAE9A7A436} = {28CF5EC6-8FFD-4AEC-A4D9-69FA5A864763}
+		{71A514FD-1122-4D49-AF8A-134DDB12D2B3} = {E1793318-470A-4167-B4E3-3F35B29AB8FE}
+		{15D6D3EC-782D-4A27-A5B2-87E74002E18A} = {E1793318-470A-4167-B4E3-3F35B29AB8FE}
+		{FAC0BF86-EBFD-4805-92F6-C7A51DD0804F} = {4A6EEC3C-02C2-4CE8-B5A8-94F213B31017}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BC1A063-FB59-47B1-A177-7FBBFDC3915C}
+	EndGlobalSection
+EndGlobal

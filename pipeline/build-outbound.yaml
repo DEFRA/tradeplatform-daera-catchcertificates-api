@@ -1,0 +1,68 @@
+name: 'V1-B$(Date:yyyyMMdd)-$(BuildID)'
+
+parameters:
+  - name: forceDevDeploy
+    displayName: "Force deployment to DEV"
+    type: boolean
+    default: false
+  - name: deployToSecondary
+    displayName: "Select Secondary Region"
+    type: string
+    default: PRD
+    values:
+      - None
+      - DEV
+      - TST
+      - PRE
+      - PRD
+
+trigger: none
+
+resources:
+  repositories:
+    - repository: PipelineCommon
+      name: DEFRA-TRD/Defra.TRD.Pipeline.Common
+      type: git
+      ref: master
+  pipelines:
+    - pipeline: INFRA
+      source: Defra.Trade.API.Infra CatchCertificates WebApp
+      trigger:
+        branches:
+          include:
+            - '*'
+        stages:
+          - DEV
+
+variables:
+  APIName: Defra.Trade.CatchCertificates
+
+extends:
+  template: /templates/basic-webapp-deploy-pipeline.yaml@PipelineCommon
+  parameters:
+    forceDevDeploy: ${{ parameters.forceDevDeploy }}
+    deployToSecondary: ${{ parameters.deployToSecondary}}
+    appName: $(APIName)
+    appProject: TRS
+    appInstanceNumber: $(nc-region-id)23
+    buildProjects: |
+      **/*Api.csproj
+      **/*Tests.csproj
+    publishProject: '**/*Api.csproj'
+    connectionStrings: '[{"name": "sql_db", "value": "Server=tcp:$(sqlServerName),1433;Database=trade-daera;", "type": "SQLAzure", "slotSetting": false}, {"name": "sql_db_audit", "value": "Server=tcp:$(Environment.Name)tradbssq1001.database.windows.net,1433;Database=trade-sci-request-store;", "type": "SQLAzure", "slotSetting": false}]'
+    setupMiUser: true
+    databaseName: 'trade-daera'
+    publishArguments: '--configuration Release --self-contained true --runtime win-x86'
+    appSettings: >-
+        -SocSettings:EventHubName "insights-application-logs"
+        -SocSettings:EventHubNameSpace "$(Environment.Name)TRDSOCEN1002.servicebus.windows.net"
+        -ProtectiveMonitoringSettings:Application "TradeApi"
+        -ProtectiveMonitoringSettings:Component "TRADE.API"
+        -ProtectiveMonitoringSettings:Enabled "true"
+        -ProtectiveMonitoringSettings:LogToAppInsights "true"
+        -ProtectiveMonitoringSettings:LogToSoc "true"
+        -ProtectiveMonitoringSettings:Environment "$(Environment.Name)"
+    publishAPIMApi:
+      apiConfig: '**/api-config/trade-catch-certificate-outbound-api.yml'
+      apiProjectName: 'Defra.Trade.CatchCertificates.Api'
+      apiTemplate: 'trade-catch-certificate-outbound-api'
