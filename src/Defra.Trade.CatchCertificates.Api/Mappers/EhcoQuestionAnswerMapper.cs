@@ -73,14 +73,16 @@ namespace Defra.Trade.CatchCertificates.Api.Mappers
 
         private static string MapDAOrigin(DtosMmo.CatchCertificateCase certificate)
         {
+            const string greatBritain = "[\"Great Britain\"]";
+
             return certificate.DA?.Trim().ToUpper() switch
             {
-                "ENGLAND" => "[\"Great Britain\"]",
-                "SCOTLAND" => "[\"Great Britain\"]",
-                "WALES" => "[\"Great Britain\"]",
-                "GUERNSEY" => "[\"Great Britain\"]",
-                "ISLE OF MAN" => "[\"Great Britain\"]",
-                "JERSEY" => "[\"Great Britain\"]",
+                "ENGLAND" => greatBritain,
+                "SCOTLAND" => greatBritain,
+                "WALES" => greatBritain,
+                "GUERNSEY" => greatBritain,
+                "ISLE OF MAN" => greatBritain,
+                "JERSEY" => greatBritain,
                 "NORTHERN IRELAND" => "[\"Northern Ireland\"]",
                 _ => null
             };
