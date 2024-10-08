@@ -1,13 +1,12 @@
 ﻿// Copyright DEFRA (c). All rights reserved.
-// Licensed under the Open Government Licence v3.0.
+// Licensed under the Open Government License v3.0.
 
 using System.Threading.Tasks;
 using Defra.Trade.Common.Audit.Enums;
 
-namespace Defra.Trade.CatchCertificates.Api.Services
+namespace Defra.Trade.CatchCertificates.Api.Services;
+
+public interface IProtectiveMonitoringService
 {
-    public interface IProtectiveMonitoringService
-    {
-        Task LogSocEventAsync(TradeApiAuditCode auditCode, string message, string additionalInfo = "");
-    }
+    Task LogSocEventAsync(TradeApiAuditCode auditCode, string message, string additionalInfo = "");
 }
