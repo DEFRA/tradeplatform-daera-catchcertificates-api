@@ -1,12 +1,12 @@
 ﻿// Copyright DEFRA (c). All rights reserved.
-// Licensed under the Open Government Licence v3.0.
+// Licensed under the Open Government License v3.0.
 
-namespace Defra.Trade.CatchCertificates.Api.Data.SqlQueries
+namespace Defra.Trade.CatchCertificates.Api.Data.SqlQueries;
+
+internal static class StorageDocumentSqlQueries
 {
-    internal static class StorageDocumentSqlQueries
-    {
-        internal const string GetPaginated =
-            @"SELECT [Id],
+    internal const string GetPaginated =
+        @"SELECT [Id],
                 [DocumentNumber],
                 [SchemaVersion],
                 [CreatedOn],
@@ -24,8 +24,8 @@ namespace Defra.Trade.CatchCertificates.Api.Data.SqlQueries
             FROM [mmo].[StorageDocument]
             WHERE [IsActive]=1;";
 
-        internal const string GetByDocumentNumber =
-            @"SELECT [Id],
+    internal const string GetByDocumentNumber =
+        @"SELECT [Id],
                 [DocumentNumber],
                 [Data],
                 [SchemaVersion],
@@ -40,8 +40,8 @@ namespace Defra.Trade.CatchCertificates.Api.Data.SqlQueries
             WHERE [DocumentNumber]=@documentNumber
             AND [IsActive]=1;";
 
-        internal const string Create =
-            @"INSERT INTO [mmo].[StorageDocument] (
+    internal const string Create =
+        @"INSERT INTO [mmo].[StorageDocument] (
                 [DocumentNumber],
                 [Data],
                 [SchemaVersion],
@@ -59,13 +59,12 @@ namespace Defra.Trade.CatchCertificates.Api.Data.SqlQueries
                 @createdSystem,
                 1);";
 
-        internal const string Update =
-            @"UPDATE [mmo].[StorageDocument]
+    internal const string Update =
+        @"UPDATE [mmo].[StorageDocument]
             SET [Data]=@data, 
                 [SchemaVersion]=@schemaVersion,
                 [LastUpdated]=@lastUpdated,
                 [LastUpdatedBy]=@lastUpdatedBy,
                 [LastUpdatedSystem]=@lastUpdatedSystem
             WHERE [Id]=@id;";
-    }
 }
