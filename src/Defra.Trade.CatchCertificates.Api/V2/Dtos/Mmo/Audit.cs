@@ -1,5 +1,5 @@
 // Copyright DEFRA (c). All rights reserved.
-// Licensed under the Open Government Licence v3.0.
+// Licensed under the Open Government License v3.0.
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 
@@ -26,6 +26,4 @@ public class Audit
     /// When and/or where the audit is being conducted
     /// </summary>
     public string AuditAt { get; set; }
-
-
 }

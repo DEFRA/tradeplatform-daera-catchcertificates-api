@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="Defra.Trade.Common" Version="4.0.2" />
     <PackageReference Include="Defra.Trade.Common.Api" Version="3.0.2" GeneratePathProperty="true">
       <ApiXmlDoc>$(PkgDefra_Trade_Common_Api)\lib\net8.0\Defra.Trade.Common.Api.xml</ApiXmlDoc>
     </PackageReference>

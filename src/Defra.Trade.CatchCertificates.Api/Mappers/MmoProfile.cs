@@ -1,5 +1,5 @@
 ﻿// Copyright DEFRA (c). All rights reserved.
-// Licensed under the Open Government Licence v3.0.
+// Licensed under the Open Government License v3.0.
 
 using System;
 using System.Text.Json;
@@ -12,28 +12,13 @@ public class MmoProfile : Profile
 {
     public MmoProfile()
     {
-        // Catch Certificate Cases V1
-        CreateMap<CatchCertificateCaseDataRow, V1.Dtos.Mmo.CatchCertificateCaseEntry>();
-        CreateDataRowToModelMapping<CatchCertificateCaseDataRow, V1.Dtos.Mmo.CatchCertificateCase>(schemaRange: 1..2);
-        CreateModelToDataRowMapping<V1.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>(schemaVersion: 1);
-
         // Catch Certificate Cases V2
         CreateDataRowToModelMapping<CatchCertificateCaseDataRow, V2.Dtos.Mmo.CatchCertificateCase>(schemaRange: 1..2);
         CreateModelToDataRowMapping<V2.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>(schemaVersion: 2);
 
-        // Processing Statements V1
-        CreateMap<ProcessingStatementDataRow, V1.Dtos.Mmo.ProcessingStatementEntry>();
-        CreateDataRowToModelMapping<ProcessingStatementDataRow, V1.Dtos.Mmo.ProcessingStatement>(schemaRange: 1..2);
-        CreateModelToDataRowMapping<V1.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>(schemaVersion: 1);
-
         // Processing Statements V2
         CreateDataRowToModelMapping<ProcessingStatementDataRow, V2.Dtos.Mmo.ProcessingStatement>(schemaRange: 1..2);
         CreateModelToDataRowMapping<V2.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>(schemaVersion: 2);
-
-        // Storage Documents V1
-        CreateMap<StorageDocumentDataRow, V1.Dtos.Mmo.StorageDocumentEntry>();
-        CreateDataRowToModelMapping<StorageDocumentDataRow, V1.Dtos.Mmo.StorageDocument>(schemaRange: 1..2);
-        CreateModelToDataRowMapping<V1.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>(schemaVersion: 1);
 
         // Storage Documents V2
         CreateDataRowToModelMapping<StorageDocumentDataRow, V2.Dtos.Mmo.StorageDocument>(schemaRange: 1..2);
