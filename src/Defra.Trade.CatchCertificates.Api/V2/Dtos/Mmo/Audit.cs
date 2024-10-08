@@ -26,6 +26,4 @@ public class Audit
     /// When and/or where the audit is being conducted
     /// </summary>
     public string AuditAt { get; set; }
-
-
 }

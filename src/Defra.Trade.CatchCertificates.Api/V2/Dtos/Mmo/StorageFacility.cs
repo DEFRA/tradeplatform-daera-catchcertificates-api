@@ -12,4 +12,3 @@ public class StorageFacility
 
     public string Name { get; set; }
 }
-
