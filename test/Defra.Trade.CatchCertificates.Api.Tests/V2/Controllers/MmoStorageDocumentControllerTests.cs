@@ -10,6 +10,7 @@ using Defra.Trade.CatchCertificates.Api.V2.Controllers;
 using Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -20,12 +21,14 @@ public class MmoStorageDocumentControllerTests
     private readonly MmoStorageDocumentController _sut;
     private readonly Mock<IMapper> _mapper;
     private readonly Mock<IStorageDocumentRepository> _repository;
+    private readonly Mock<ILogger<MmoStorageDocumentController>> _logger;
 
     public MmoStorageDocumentControllerTests()
     {
         _mapper = new(MockBehavior.Strict);
         _repository = new(MockBehavior.Strict);
-        _sut = new(_mapper.Object, _repository.Object);
+        _logger = new();
+        _sut = new(_mapper.Object, _repository.Object, _logger.Object);
     }
 
     [Fact]
