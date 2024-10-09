@@ -6,9 +6,11 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Defra.Trade.CatchCertificates.Api.Data;
+using Defra.Trade.CatchCertificates.Api.Extensions;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using CommonDtos = Defra.Trade.Common.Api.Dtos;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
@@ -26,13 +28,19 @@ public class MmoProcessingStatementController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IProcessingStatementRepository _repository;
+    private readonly ILogger<MmoProcessingStatementController> _logger;
 
-    public MmoProcessingStatementController(IMapper mapper, IProcessingStatementRepository repository)
+    public MmoProcessingStatementController(
+        IMapper mapper,
+        IProcessingStatementRepository repository,
+        ILogger<MmoProcessingStatementController> logger)
     {
         ArgumentNullException.ThrowIfNull(mapper);
         ArgumentNullException.ThrowIfNull(repository);
+        ArgumentNullException.ThrowIfNull(logger);
         _mapper = mapper;
         _repository = repository;
+        _logger = logger;
     }
 
     /// <summary>
@@ -59,6 +67,8 @@ public class MmoProcessingStatementController : ControllerBase
             var dataRow = _mapper.Map<Models.ProcessingStatementDataRow>(statement);
 
             await _repository.CreateAsync(dataRow);
+
+            _logger.MmoProcessingStatementCreateSuccess(statement.DocumentNumber);
         }
         else
         {
@@ -69,6 +79,8 @@ public class MmoProcessingStatementController : ControllerBase
                 existing = _mapper.Map(statement, existing);
 
                 await _repository.UpdateAsync(existing);
+
+                _logger.MmoProcessingStatementUpdateSuccess(statement.DocumentNumber);
             }
         }
 
