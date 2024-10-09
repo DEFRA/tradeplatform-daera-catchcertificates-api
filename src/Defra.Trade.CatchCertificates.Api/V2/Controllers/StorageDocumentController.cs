@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Defra.Trade.CatchCertificates.Api.Data;
+using Defra.Trade.CatchCertificates.Api.Extensions;
 using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.Dtos;
 using Defra.Trade.Common.Api.OpenApi;
@@ -16,6 +17,7 @@ using Defra.Trade.Common.ExternalApi.Auditing.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 using DtosOutbound = Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
@@ -35,15 +37,22 @@ public class StorageDocumentController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IProtectiveMonitoringService _protectiveMonitoringService;
     private readonly IStorageDocumentRepository _repository;
+    private readonly ILogger<StorageDocumentController> _logger;
 
-    public StorageDocumentController(IMapper mapper, IStorageDocumentRepository repository, IProtectiveMonitoringService protectiveMonitoringService)
+    public StorageDocumentController(
+        IMapper mapper,
+        IStorageDocumentRepository repository,
+        IProtectiveMonitoringService protectiveMonitoringService,
+        ILogger<StorageDocumentController> logger)
     {
         ArgumentNullException.ThrowIfNull(mapper);
         ArgumentNullException.ThrowIfNull(repository);
         ArgumentNullException.ThrowIfNull(protectiveMonitoringService);
+        ArgumentNullException.ThrowIfNull(logger);
         _mapper = mapper;
         _repository = repository;
         _protectiveMonitoringService = protectiveMonitoringService;
+        _logger = logger;
     }
 
     /// <summary>
@@ -64,14 +73,19 @@ public class StorageDocumentController : ControllerBase
 
         if (dataRow is null)
         {
+            _logger.StorageDocumentGetByIdNotFound(documentNumber);
+
             return NotFound();
         }
 
         var document = _mapper.Map<DtosMmo.StorageDocument>(dataRow);
-
         var result = _mapper.Map<DtosOutbound.StorageDocument>(document);
 
-        await _protectiveMonitoringService.LogSocEventAsync(TradeApiAuditCode.ProductionStorageDocumentByDocNumber, "Successfully fetched Storage Document for Production");
+        await _protectiveMonitoringService.LogSocEventAsync(
+            TradeApiAuditCode.ProductionStorageDocumentByDocNumber,
+            "Successfully fetched Storage Document for Production");
+
+        _logger.StorageDocumentGetByIdSuccess(documentNumber);
 
         return Ok(result);
     }
