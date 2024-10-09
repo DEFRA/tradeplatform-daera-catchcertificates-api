@@ -6,9 +6,11 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Defra.Trade.CatchCertificates.Api.Data;
+using Defra.Trade.CatchCertificates.Api.Extensions;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
@@ -24,13 +26,19 @@ public class MmoCatchCertificateCaseController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly ICatchCertificateCaseRepository _repository;
+    private readonly ILogger<MmoCatchCertificateCaseController> _logger;
 
-    public MmoCatchCertificateCaseController(IMapper mapper, ICatchCertificateCaseRepository repository)
+    public MmoCatchCertificateCaseController(
+        IMapper mapper,
+        ICatchCertificateCaseRepository repository,
+        ILogger<MmoCatchCertificateCaseController> logger)
     {
         ArgumentNullException.ThrowIfNull(mapper);
         ArgumentNullException.ThrowIfNull(repository);
+        ArgumentNullException.ThrowIfNull(logger);
         _mapper = mapper;
         _repository = repository;
+        _logger = logger;
     }
 
     /// <summary>
@@ -56,6 +64,8 @@ public class MmoCatchCertificateCaseController : ControllerBase
             var dataRow = _mapper.Map<Models.CatchCertificateCaseDataRow>(certificate);
 
             await _repository.CreateAsync(dataRow);
+
+            _logger.MmoCatchCertificateCaseCreateSuccess(certificate.DocumentNumber);
         }
         else
         {
@@ -66,6 +76,8 @@ public class MmoCatchCertificateCaseController : ControllerBase
                 existing = _mapper.Map(certificate, existing);
 
                 await _repository.UpdateAsync(existing);
+
+                _logger.MmoCatchCertificateCaseUpdateSuccess(certificate.DocumentNumber);
             }
         }
 

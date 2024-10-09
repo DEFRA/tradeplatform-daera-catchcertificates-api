@@ -25,7 +25,7 @@
     <PackageReference Include="Defra.Trade.Common.Audit" Version="3.0.0" />
     <PackageReference Include="Defra.Trade.Common.ExternalApi" Version="3.0.1" />
     <PackageReference Include="Defra.Trade.Common.Sql" Version="3.0.1" />
-    <PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.0" />
+    <PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.1" />
   </ItemGroup>
 
   <Target Name="BuildCopyPackagesXmlDoc" AfterTargets="Build">

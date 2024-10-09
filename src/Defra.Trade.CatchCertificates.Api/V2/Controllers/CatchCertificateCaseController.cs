@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Defra.Trade.CatchCertificates.Api.Data;
+using Defra.Trade.CatchCertificates.Api.Extensions;
 using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.Dtos;
 using Defra.Trade.Common.Api.OpenApi;
@@ -16,6 +17,7 @@ using Defra.Trade.Common.ExternalApi.Auditing.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 using DtosOutbound = Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
@@ -35,15 +37,22 @@ public class CatchCertificateCaseController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IProtectiveMonitoringService _protectiveMonitoringService;
     private readonly ICatchCertificateCaseRepository _repository;
+    private readonly ILogger<CatchCertificateCaseController> _logger;
 
-    public CatchCertificateCaseController(IMapper mapper, ICatchCertificateCaseRepository repository, IProtectiveMonitoringService protectiveMonitoringService)
+    public CatchCertificateCaseController(
+        IMapper mapper,
+        ICatchCertificateCaseRepository repository,
+        IProtectiveMonitoringService protectiveMonitoringService,
+        ILogger<CatchCertificateCaseController> logger)
     {
         ArgumentNullException.ThrowIfNull(mapper);
         ArgumentNullException.ThrowIfNull(repository);
         ArgumentNullException.ThrowIfNull(protectiveMonitoringService);
+        ArgumentNullException.ThrowIfNull(logger);
         _mapper = mapper;
         _repository = repository;
         _protectiveMonitoringService = protectiveMonitoringService;
+        _logger = logger;
     }
 
     /// <summary>
@@ -64,14 +73,19 @@ public class CatchCertificateCaseController : ControllerBase
 
         if (dataRow is null)
         {
+            _logger.CatchCertificateCaseGetByIdNotFound(documentNumber);
+
             return NotFound();
         }
 
         var certificate = _mapper.Map<DtosMmo.CatchCertificateCase>(dataRow);
-
         var result = _mapper.Map<DtosOutbound.CatchCertificateCase>(certificate);
 
-        await _protectiveMonitoringService.LogSocEventAsync(TradeApiAuditCode.ProductionCatchCertificateCaseByDocNumber, "Successfully fetched Catch Certificate case for Production");
+        await _protectiveMonitoringService.LogSocEventAsync(
+            TradeApiAuditCode.ProductionCatchCertificateCaseByDocNumber,
+            "Successfully fetched Catch Certificate case for Production");
+
+        _logger.CatchCertificateCaseGetByIdSuccess(documentNumber);
 
         return Ok(result);
     }
