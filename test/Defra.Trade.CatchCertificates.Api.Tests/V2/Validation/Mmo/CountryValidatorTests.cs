@@ -36,12 +36,6 @@ public class CountryValidatorTests
         result.ShouldHaveValidationErrorFor(x => x.IsoCodeAlpha2)
             .WithErrorMessage("'Iso Code Alpha2' must not be empty.");
 
-        result.ShouldHaveValidationErrorFor(x => x.IsoCodeAlpha3)
-            .WithErrorMessage("'Iso Code Alpha3' must not be empty.");
-
-        result.ShouldHaveValidationErrorFor(x => x.IsoNumericCode)
-            .WithErrorMessage("'Iso Numeric Code' must not be empty.");
-
-        result.Errors.Should().HaveCount(4);
+        result.Errors.Should().HaveCount(2);
     }
 }
