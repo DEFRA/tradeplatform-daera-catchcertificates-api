@@ -1,0 +1,20 @@
+﻿// Copyright DEFRA (c). All rights reserved.
+// Licensed under the Open Government License v3.0.
+
+namespace Defra.Trade.CatchCertificates.Api.V3.Dtos.OutboundMmo;
+
+/// <summary>
+/// Storage facility details
+/// </summary>
+public class StorageFacility
+{
+    /// <summary>
+    /// The address of the storage facility
+    /// </summary>
+    public Address Address { get; set; }
+
+    /// <summary>
+    /// The name of the storage facility
+    /// </summary>
+    public string Name { get; set; }
+}
