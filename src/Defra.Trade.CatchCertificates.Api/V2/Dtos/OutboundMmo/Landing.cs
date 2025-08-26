@@ -172,7 +172,7 @@ public class Landing
     /// <summary>
     /// The landing risk
     /// </summary>
-    public Risk Risking { get; set; }
+    public V3.Dtos.OutboundMmo.Risk Risking { get; set; }
 
     /// <summary>
     /// Scientific name.
@@ -230,7 +230,7 @@ public class Landing
     /// <summary>
     /// Validation detail for the landing.
     /// </summary>
-    public LandingValidation Validation { get; set; }
+    public V3.Dtos.OutboundMmo.LandingValidation Validation { get; set; }
 
     /// <summary>
     /// The administration of the vessel

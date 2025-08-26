@@ -10,13 +10,13 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 public class ProcessingStatementValidator : AbstractValidator<ProcessingStatement>
 {
     public ProcessingStatementValidator(
-        IValidator<Catch> catchValidator,
-        IValidator<Country> countryValidator,
-        IValidator<Exporter> exporterValidator,
-        IValidator<Authority> authorityValidator,
-        IValidator<Address> addressValidator) : base()
+        IValidator<V3.Dtos.Mmo.Catch> catchValidator,
+        IValidator<V3.Dtos.Mmo.Country> countryValidator,
+        IValidator<V3.Dtos.Mmo.Exporter> exporterValidator,
+        IValidator<V3.Dtos.Mmo.Authority> authorityValidator,
+        IValidator<V3.Dtos.Mmo.Address> addressValidator) : base()
     {
-        this.AddCoreValidation<ProcessingStatement, Exporter, Country>();
+        this.AddCoreValidation<ProcessingStatement, V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>();
 
         RuleFor(x => x.Authority).NotNull().SetValidator(authorityValidator);
 

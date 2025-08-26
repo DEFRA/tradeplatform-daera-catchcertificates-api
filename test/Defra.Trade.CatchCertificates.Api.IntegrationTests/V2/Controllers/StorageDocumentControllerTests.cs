@@ -18,6 +18,7 @@ using static Defra.Trade.CatchCertificates.Api.IntegrationTests.Helpers.CommonPr
 using static Defra.Trade.CatchCertificates.Api.IntegrationTests.Helpers.MmoFixtures;
 using AuditingModels = Defra.Trade.Common.ExternalApi.Auditing.Models;
 using DtosInboundMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using DtosInboundMmo3 = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 using DtosOutboundMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
 namespace Defra.Trade.CatchCertificates.Api.IntegrationTests.V2.Controllers;
@@ -90,11 +91,11 @@ public class StorageDocumentControllerTests : IClassFixture<CatchCertificatesApi
             .Excluding(c => c.LastUpdated)
             .Excluding(c => c.LastUpdatedBy)
             .Excluding(c => c.LastUpdatedSystem)
-            .Excluding((IMemberInfo m) => m.DeclaringType == typeof(DtosInboundMmo.DynamicsAddress) && (
-                m.Name == nameof(DtosInboundMmo.DynamicsAddress.DefraCountryValueMicrosoftDynamicsCrmAssociatedNavigationProperty)
-                || m.Name == nameof(DtosInboundMmo.DynamicsAddress.DefraCountryValueMicrosoftDynamicsCrmLookupLogicalname)
-                || m.Name == nameof(DtosInboundMmo.DynamicsAddress.DefraCountryValueODataCommunityDisplayV1FormattedValue)
-                || m.Name == nameof(DtosInboundMmo.DynamicsAddress.DefraFromCompaniesHouseODataCommunityDisplayV1FormattedValue)
+            .Excluding(m => m.DeclaringType == typeof(DtosInboundMmo3.DynamicsAddress) && (
+                m.Name == nameof(DtosInboundMmo3.DynamicsAddress.DefraCountryValueMicrosoftDynamicsCrmAssociatedNavigationProperty)
+                || m.Name == nameof(DtosInboundMmo3.DynamicsAddress.DefraCountryValueMicrosoftDynamicsCrmLookupLogicalname)
+                || m.Name == nameof(DtosInboundMmo3.DynamicsAddress.DefraCountryValueODataCommunityDisplayV1FormattedValue)
+                || m.Name == nameof(DtosInboundMmo3.DynamicsAddress.DefraFromCompaniesHouseODataCommunityDisplayV1FormattedValue)
             )));
 
         _webApplicationFactory.AuditRepository.VerifyAuditLogged(AuditingModels.Enums.AuditLogType.DaeraFishExportServiceV2StorageDocumentGetById,

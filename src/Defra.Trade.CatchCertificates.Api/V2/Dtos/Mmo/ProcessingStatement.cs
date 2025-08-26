@@ -6,17 +6,17 @@ using Defra.Trade.CatchCertificates.Api.Models;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 
-public class ProcessingStatement : MessageCore<Exporter, Country>
+public class ProcessingStatement : MessageCore<V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>
 {
     /// <summary>
     /// The authority.
     /// </summary>
-    public Authority Authority { get; set; }
+    public V3.Dtos.Mmo.Authority Authority { get; set; }
 
     /// <summary>
     /// The catches.
     /// </summary>
-    public IEnumerable<Catch> Catches { get; set; }
+    public IEnumerable<V3.Dtos.Mmo.Catch> Catches { get; set; }
 
     /// <summary>
     /// The exporter identifier.
@@ -41,7 +41,7 @@ public class ProcessingStatement : MessageCore<Exporter, Country>
     /// <summary>
     /// The plant address.
     /// </summary>
-    public Address PlantAddress { get; set; }
+    public V3.Dtos.Mmo.Address PlantAddress { get; set; }
 
     /// <summary>
     /// The plant approval number.

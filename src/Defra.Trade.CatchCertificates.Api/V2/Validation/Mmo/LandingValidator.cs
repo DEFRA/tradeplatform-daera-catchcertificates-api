@@ -8,7 +8,7 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 
 public class LandingValidator : AbstractValidator<Landing>
 {
-    public LandingValidator(IValidator<LandingValidation> landingValidationValidator)
+    public LandingValidator(IValidator<V3.Dtos.Mmo.LandingValidation> landingValidationValidator)
     {
         RuleFor(x => x.Status)
             .NotNull();

@@ -2,7 +2,8 @@
 // Licensed under the Open Government License v3.0.
 
 using AutoFixture;
-using Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V2Dto = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V3Dto = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 using Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 using FluentAssertions;
 using FluentValidation;
@@ -15,11 +16,11 @@ namespace Defra.Trade.CatchCertificates.Api.Tests.V2.Validation.Mmo;
 
 public class StorageDocumentValidatorTests
 {
-    private readonly Mock<IValidator<Product>> _productValidator;
-    private readonly Mock<IValidator<Country>> _countryValidator;
-    private readonly Mock<IValidator<Exporter>> _exporterValidator;
-    private readonly Mock<IValidator<Authority>> _authorityValidator;
-    private readonly Mock<IValidator<Transportation>> _transportValidator;
+    private readonly Mock<IValidator<V3Dto.Product>> _productValidator;
+    private readonly Mock<IValidator<V3Dto.Country>> _countryValidator;
+    private readonly Mock<IValidator<V3Dto.Exporter>> _exporterValidator;
+    private readonly Mock<IValidator<V3Dto.Authority>> _authorityValidator;
+    private readonly Mock<IValidator<V3Dto.Transportation>> _transportValidator;
     private readonly StorageDocumentValidator _sut;
     private readonly Fixture _fixture;
 
@@ -38,31 +39,31 @@ public class StorageDocumentValidatorTests
     public void Validate_Valid_OK()
     {
         // arrange
-        var model = _fixture.Build<StorageDocument>()
+        var model = _fixture.Build<V2Dto.StorageDocument>()
             .With(x => x.Version, 2)
             .With(x => x.LastUpdatedSystem, "TESTSYS")
             .Create();
 
-        _authorityValidator.Setup(m => m.Validate(It.Is<ValidationContext<Authority>>(ctx => ctx.InstanceToValidate == model.Authority)))
+        _authorityValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Authority>>(ctx => ctx.InstanceToValidate == model.Authority)))
             .Returns(new ValidationResult())
             .Verifiable();
 
         foreach (var product in model.Products)
         {
-            _productValidator.Setup(m => m.Validate(It.Is<ValidationContext<Product>>(ctx => ctx.InstanceToValidate == product)))
+            _productValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Product>>(ctx => ctx.InstanceToValidate == product)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
+        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
+        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
+        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
             .Returns(new ValidationResult())
             .Verifiable();
 
@@ -78,7 +79,7 @@ public class StorageDocumentValidatorTests
     public void Validate_Nulls_Error()
     {
         // arrange
-        var model = new StorageDocument() { Version = 2 };
+        var model = new V2Dto.StorageDocument() { Version = 2 };
 
         // act
         var result = _sut.TestValidate(model);

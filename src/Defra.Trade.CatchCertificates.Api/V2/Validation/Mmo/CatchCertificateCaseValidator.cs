@@ -11,12 +11,12 @@ public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateC
 {
     public CatchCertificateCaseValidator(
         IValidator<Landing> landingValidator,
-        IValidator<Country> countryValidator,
-        IValidator<Exporter> exporterValidator,
-        IValidator<Audit> auditValidator,
-        IValidator<Transportation> transportValidator)
+        IValidator<V3.Dtos.Mmo.Country> countryValidator,
+        IValidator<V3.Dtos.Mmo.Exporter> exporterValidator,
+        IValidator<V3.Dtos.Mmo.Audit> auditValidator,
+        IValidator<V3.Dtos.Mmo.Transportation> transportValidator)
     {
-        this.AddCoreValidation<CatchCertificateCase, Exporter, Country>();
+        this.AddCoreValidation<CatchCertificateCase, V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>();
 
         RuleFor(x => x.Version)
             .Must(x => x.Equals(2));

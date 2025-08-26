@@ -65,7 +65,7 @@ public class Landing
 
     public string Rfmo { get; set; }
 
-    public Risk Risking { get; set; }
+    public V3.Dtos.Mmo.Risk Risking { get; set; }
 
     public string ScientificName { get; set; }
 
@@ -85,7 +85,7 @@ public class Landing
 
     public string Status { get; set; }
 
-    public LandingValidation Validation { get; set; }
+    public V3.Dtos.Mmo.LandingValidation Validation { get; set; }
 
     public string VesselAdministration { get; set; }
 

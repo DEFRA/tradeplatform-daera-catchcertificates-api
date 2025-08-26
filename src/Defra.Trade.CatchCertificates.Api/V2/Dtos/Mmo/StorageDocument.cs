@@ -9,12 +9,12 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 /// <summary>
 /// Schema for Storage Document data transfer to Defra Trade (CHIP).
 /// </summary>
-public class StorageDocument : MessageCore<Exporter, Country>
+public class StorageDocument : MessageCore<V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>
 {
     /// <summary>
     /// The authority.
     /// </summary>
-    public Authority Authority { get; set; }
+    public V3.Dtos.Mmo.Authority Authority { get; set; }
 
     /// <summary>
     /// The name of the company.
@@ -29,17 +29,17 @@ public class StorageDocument : MessageCore<Exporter, Country>
     /// <summary>
     /// The products.
     /// </summary>
-    public IEnumerable<Product> Products { get; set; }
+    public IEnumerable<V3.Dtos.Mmo.Product> Products { get; set; }
 
     /// <summary>
     /// The storage facilities.
     /// </summary>
-    public IEnumerable<StorageFacility> StorageFacilities { get; set; }
+    public IEnumerable<V3.Dtos.Mmo.StorageFacility> StorageFacilities { get; set; }
 
     /// <summary>
     /// The transportation.
     /// </summary>
-    public Transportation Transportation { get; set; }
+    public V3.Dtos.Mmo.Transportation Transportation { get; set; }
 
     /// <summary>
     /// The version.

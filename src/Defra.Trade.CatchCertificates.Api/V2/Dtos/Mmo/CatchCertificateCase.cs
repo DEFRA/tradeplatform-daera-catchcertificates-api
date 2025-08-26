@@ -6,12 +6,12 @@ using Defra.Trade.CatchCertificates.Api.Models;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 
-public class CatchCertificateCase : MessageCore<Exporter, Country>
+public class CatchCertificateCase : MessageCore<V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>
 {
     /// <summary>
     /// List of audits against the catch certificate case
     /// </summary>
-    public IEnumerable<Audit> Audits { get; set; }
+    public IEnumerable<V3.Dtos.Mmo.Audit> Audits { get; set; }
 
     /// <summary>
     /// Certificate Status
@@ -52,7 +52,7 @@ public class CatchCertificateCase : MessageCore<Exporter, Country>
     /// <summary>
     /// The transportation details for this catch certificate case
     /// </summary>
-    public Transportation Transportation { get; set; }
+    public V3.Dtos.Mmo.Transportation Transportation { get; set; }
 
     /// <summary>
     /// Schema version

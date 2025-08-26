@@ -11,7 +11,7 @@ public class ProcessingStatement
     /// <summary>
     /// The authority.
     /// </summary>
-    public Authority Authority { get; set; }
+    public V3.Dtos.OutboundMmo.Authority Authority { get; set; }
 
     /// <summary>
     /// The case type1.
@@ -32,7 +32,7 @@ public class ProcessingStatement
     /// <summary>
     /// Catch details in the processing statement.
     /// </summary>
-    public IEnumerable<Catch> Catches { get; set; }
+    public IEnumerable<V3.Dtos.OutboundMmo.Catch> Catches { get; set; }
 
     /// <summary>
     /// Unique ID to improve the end to end traceability of an event
@@ -67,12 +67,12 @@ public class ProcessingStatement
     /// <summary>
     /// Where is the catch exported to.
     /// </summary>
-    public Country ExportedTo { get; set; }
+    public V3.Dtos.OutboundMmo.Country ExportedTo { get; set; }
 
     /// <summary>
     /// Details of the Exporter organisation.
     /// </summary>
-    public Exporter Exporter { get; set; }
+    public V3.Dtos.OutboundMmo.Exporter Exporter { get; set; }
 
     /// <summary>
     /// The exporter identifier.
@@ -103,7 +103,7 @@ public class ProcessingStatement
     /// <summary>
     /// The plant address.
     /// </summary>
-    public Address PlantAddress { get; set; }
+    public V3.Dtos.OutboundMmo.Address PlantAddress { get; set; }
 
     /// <summary>
     /// The plant approval number.

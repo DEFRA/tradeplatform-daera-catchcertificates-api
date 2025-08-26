@@ -2,7 +2,8 @@
 // Licensed under the Open Government License v3.0.
 
 using AutoFixture;
-using Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V2Dto = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V3Dto = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 using Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 using FluentAssertions;
 using FluentValidation;
@@ -15,13 +16,13 @@ namespace Defra.Trade.CatchCertificates.Api.Tests.V2.Validation.Mmo;
 
 public class CatchCertificateCaseValidatorTests
 {
-    private readonly Mock<IValidator<Audit>> _auditValidator;
-    private readonly Mock<IValidator<Country>> _countryValidator;
-    private readonly Mock<IValidator<Exporter>> _exporterValidator;
+    private readonly Mock<IValidator<V3Dto.Audit>> _auditValidator;
+    private readonly Mock<IValidator<V3Dto.Country>> _countryValidator;
+    private readonly Mock<IValidator<V3Dto.Exporter>> _exporterValidator;
     private readonly Fixture _fixture;
     private readonly CatchCertificateCaseValidator _itemUnderTest;
-    private readonly Mock<IValidator<Landing>> _landingValidator;
-    private readonly Mock<IValidator<Transportation>> _transportValidator;
+    private readonly Mock<IValidator<V2Dto.Landing>> _landingValidator;
+    private readonly Mock<IValidator<V3Dto.Transportation>> _transportValidator;
 
     public CatchCertificateCaseValidatorTests()
     {
@@ -39,7 +40,7 @@ public class CatchCertificateCaseValidatorTests
     public void Validate_LastUpdated_Length_Error()
     {
         // arrange
-        var model = _fixture.Build<CatchCertificateCase>()
+        var model = _fixture.Build<V2Dto.CatchCertificateCase>()
             .With(x => x.Version, 2)
             .With(x => x.LastUpdatedSystem, new string('a', 11))
             .With(x => x.LastUpdatedBy, new string('z', 101))
@@ -49,27 +50,27 @@ public class CatchCertificateCaseValidatorTests
 
         foreach (var landing in model.Landings)
         {
-            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<Landing>>(ctx => ctx.InstanceToValidate == landing)))
+            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V2Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
+        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
+        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
             .Returns(new ValidationResult())
             .Verifiable();
 
         foreach (var audit in model.Audits)
         {
-            _auditValidator.Setup(m => m.Validate(It.Is<ValidationContext<Audit>>(ctx => ctx.InstanceToValidate == audit)))
+            _auditValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Audit>>(ctx => ctx.InstanceToValidate == audit)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
+        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
             .Returns(new ValidationResult())
             .Verifiable();
 
@@ -95,7 +96,7 @@ public class CatchCertificateCaseValidatorTests
     public void Validate_Nulls_Error()
     {
         // arrange
-        var model = new CatchCertificateCase() { Version = 1 };
+        var model = new V2Dto.CatchCertificateCase() { Version = 1 };
 
         // act
         var result = _itemUnderTest.TestValidate(model);
@@ -152,34 +153,34 @@ public class CatchCertificateCaseValidatorTests
     public void Validate_Valid_OK()
     {
         // arrange
-        var model = _fixture.Build<CatchCertificateCase>()
+        var model = _fixture.Build<V2Dto.CatchCertificateCase>()
             .With(x => x.Version, 2)
             .With(x => x.LastUpdatedSystem, "TESTSYS")
             .Create();
 
         foreach (var landing in model.Landings)
         {
-            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<Landing>>(ctx => ctx.InstanceToValidate == landing)))
+            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V2Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
+        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
+        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
             .Returns(new ValidationResult())
             .Verifiable();
 
         foreach (var audit in model.Audits)
         {
-            _auditValidator.Setup(m => m.Validate(It.Is<ValidationContext<Audit>>(ctx => ctx.InstanceToValidate == audit)))
+            _auditValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Audit>>(ctx => ctx.InstanceToValidate == audit)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
+        _transportValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Transportation>>(ctx => ctx.InstanceToValidate == model.Transportation)))
             .Returns(new ValidationResult())
             .Verifiable();
 
