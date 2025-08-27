@@ -60,7 +60,7 @@ public class Landing
     /// <summary>
     /// The Exclusive Economic Zones where fish were caught
     /// </summary>
-    public bool? ExclusiveEconomicZones { get; set; }
+    public bool ExclusiveEconomicZones { get; set; }
 
     /// <summary>
     /// The licence for the vessel used in the landing
@@ -172,7 +172,7 @@ public class Landing
     /// <summary>
     /// The landing risk
     /// </summary>
-    public V3.Dtos.OutboundMmo.Risk Risking { get; set; }
+    public Risk Risking { get; set; }
 
     /// <summary>
     /// Scientific name.
@@ -230,7 +230,7 @@ public class Landing
     /// <summary>
     /// Validation detail for the landing.
     /// </summary>
-    public V3.Dtos.OutboundMmo.LandingValidation Validation { get; set; }
+    public LandingValidation Validation { get; set; }
 
     /// <summary>
     /// The administration of the vessel

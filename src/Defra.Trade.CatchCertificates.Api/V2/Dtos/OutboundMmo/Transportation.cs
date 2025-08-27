@@ -3,7 +3,7 @@
 
 using Defra.Trade.CatchCertificates.Api.V3.Dtos.Enums;
 
-namespace Defra.Trade.CatchCertificates.Api.V3.Dtos.OutboundMmo;
+namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
 /// <summary>
 /// Details of Transport (Vessel / flight number / railway bill / truck registration)

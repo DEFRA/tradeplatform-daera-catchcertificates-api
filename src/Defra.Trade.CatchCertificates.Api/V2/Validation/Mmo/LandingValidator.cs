@@ -1,12 +1,11 @@
 // Copyright DEFRA (c). All rights reserved.
 // Licensed under the Open Government License v3.0.
 
-using Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 using FluentValidation;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 
-public class LandingValidator : AbstractValidator<Landing>
+public class LandingValidator : AbstractValidator<V3.Dtos.Mmo.Landing>
 {
     public LandingValidator(IValidator<V3.Dtos.Mmo.LandingValidation> landingValidationValidator)
     {

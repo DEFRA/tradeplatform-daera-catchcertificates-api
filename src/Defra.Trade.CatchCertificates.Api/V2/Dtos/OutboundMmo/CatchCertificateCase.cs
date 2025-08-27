@@ -11,7 +11,7 @@ public class CatchCertificateCase
     /// <summary>
     /// List of audits against the catch certificate case
     /// </summary>
-    public IEnumerable<V3.Dtos.OutboundMmo.Audit> Audits { get; set; }
+    public IEnumerable<Audit> Audits { get; set; }
 
     /// <summary>
     /// Case Type 1
@@ -68,12 +68,12 @@ public class CatchCertificateCase
     /// <summary>
     /// Where is the catch exported to
     /// </summary>
-    public V3.Dtos.OutboundMmo.Country ExportedTo { get; set; }
+    public Country ExportedTo { get; set; }
 
     /// <summary>
     /// Details of the Exporter organisation.
     /// </summary>
-    public V3.Dtos.OutboundMmo.Exporter Exporter { get; set; }
+    public Exporter Exporter { get; set; }
 
     /// <summary>
     /// Flag to inform whether validation failure occurred in one of more landings
@@ -125,7 +125,7 @@ public class CatchCertificateCase
     /// <summary>
     /// The transportation details for this catch certificate case
     /// </summary>
-    public V3.Dtos.OutboundMmo.Transportation Transportation { get; set; }
+    public Transportation Transportation { get; set; }
 
     /// <summary>
     /// Schema version

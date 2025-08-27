@@ -21,7 +21,7 @@ public class CatchCertificateCaseValidatorTests
     private readonly Mock<IValidator<V3Dto.Exporter>> _exporterValidator;
     private readonly Fixture _fixture;
     private readonly CatchCertificateCaseValidator _itemUnderTest;
-    private readonly Mock<IValidator<V2Dto.Landing>> _landingValidator;
+    private readonly Mock<IValidator<V3Dto.Landing>> _landingValidator;
     private readonly Mock<IValidator<V3Dto.Transportation>> _transportValidator;
 
     public CatchCertificateCaseValidatorTests()
@@ -50,7 +50,7 @@ public class CatchCertificateCaseValidatorTests
 
         foreach (var landing in model.Landings)
         {
-            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V2Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
+            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
@@ -160,7 +160,7 @@ public class CatchCertificateCaseValidatorTests
 
         foreach (var landing in model.Landings)
         {
-            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V2Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
+            _landingValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Landing>>(ctx => ctx.InstanceToValidate == landing)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }

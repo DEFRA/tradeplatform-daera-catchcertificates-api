@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Defra.Trade.CatchCertificates.Api.V3.Dtos.OutboundMmo;
+namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
 public class DynamicsAddress
 {

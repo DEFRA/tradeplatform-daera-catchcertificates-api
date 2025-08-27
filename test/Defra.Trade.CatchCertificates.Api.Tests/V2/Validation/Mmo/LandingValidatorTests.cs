@@ -2,8 +2,7 @@
 // Licensed under the Open Government License v3.0.
 
 using AutoFixture;
-using V2Dto = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
-using V3Dto = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
+using Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 using Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 using FluentAssertions;
 using FluentValidation;
@@ -16,7 +15,7 @@ namespace Defra.Trade.CatchCertificates.Api.Tests.V2.Validation.Mmo;
 
 public class LandingValidatorTests
 {
-    private readonly Mock<IValidator<V3Dto.LandingValidation>> _landingValidationValidator;
+    private readonly Mock<IValidator<LandingValidation>> _landingValidationValidator;
     private readonly LandingValidator _itemUnderTest;
     private readonly Fixture _fixture;
 
@@ -31,9 +30,9 @@ public class LandingValidatorTests
     public void Validate_Valid_OK()
     {
         // arrange
-        var model = _fixture.Create<V2Dto.Landing>();
+        var model = _fixture.Create<Landing>();
 
-        _landingValidationValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.LandingValidation>>(ctx => ctx.InstanceToValidate == model.Validation)))
+        _landingValidationValidator.Setup(m => m.Validate(It.Is<ValidationContext<LandingValidation>>(ctx => ctx.InstanceToValidate == model.Validation)))
             .Returns(new ValidationResult())
             .Verifiable();
 
@@ -48,7 +47,7 @@ public class LandingValidatorTests
     [Fact]
     public void Validate_Nulls_Error()
     {
-        var model = new V2Dto.Landing();
+        var model = new Landing();
 
         var result = _itemUnderTest.TestValidate(model);
 

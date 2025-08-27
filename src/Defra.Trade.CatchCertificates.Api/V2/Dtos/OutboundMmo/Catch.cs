@@ -1,52 +1,42 @@
 ﻿// Copyright DEFRA (c). All rights reserved.
 // Licensed under the Open Government License v3.0.
 
-namespace Defra.Trade.CatchCertificates.Api.V3.Dtos.OutboundMmo;
+namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
 /// <summary>
-/// Product information.
+/// Catch information.
 /// </summary>
-public class Product
+public class Catch
 {
     /// <summary>
     /// Combined Nomenclature Code for the product.
     /// </summary>
-    /// <example>1604142800</example>
+    /// <example></example>
     public string CnCode { get; set; }
 
     /// <summary>
-    /// The date of unloading.
-    /// </summary>
-    public string DateOfUnloading { get; set; }
-
-    /// <summary>
-    /// Weight in Kg for the exported product.
-    /// </summary>
-    /// <example>2500</example>
-    public double ExportedWeight { get; set; }
-
-    /// <summary>
-    /// Certificate number for the catch where the catch was landed and certified in a non UK Port.
+    /// Certificate number for the catch where the catch was landed and certified in a non-UK Port.
     /// </summary>
     /// <example>ABC1234</example>
     public string ForeignCatchCertificateNumber { get; set; }
 
     /// <summary>
-    /// Unique identifier for the product.
+    /// Unique identifier for the catch.
     /// </summary>
-    /// <example>GBR-2020-CC-4D780B2B3-8082999589</example>
+    /// <example>GBR-2020-CC-1A799A2C3-8373773293</example>
     public string Id { get; set; }
 
     /// <summary>
-    /// Weight in Kg of the imported product.
+    /// Weight in Kg of the imported catch.
     /// </summary>
-    /// <example>19000</example>
+    /// <example>890</example>
     public double ImportedWeight { get; set; }
 
     /// <summary>
-    /// The place of unloading.
+    /// Processed weight in Kg.
     /// </summary>
-    public string PlaceOfUnloading { get; set; }
+    /// <example>895</example>
+    public double ProcessedWeight { get; set; }
 
     /// <summary>
     /// Scientific name for the catch.
@@ -57,16 +47,17 @@ public class Product
     /// <summary>
     /// Common species code for the catch.
     /// </summary>
-    /// <example>SKJ</example>
+    /// <example>ACL</example>
     public string Species { get; set; }
 
     /// <summary>
-    /// The transport unloaded from.
+    /// Total amount of the imported weight in Kg used before processing.
     /// </summary>
-    public string TransportUnloadedFrom { get; set; }
+    /// <example>800</example>
+    public double UsedWeightAgainstCertificate { get; set; }
 
     /// <summary>
     /// The validation.
     /// </summary>
-    public ProductValidation Validation { get; set; }
+    public CatchValidation Validation { get; set; }
 }

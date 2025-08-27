@@ -11,7 +11,7 @@ public class StorageDocument
     /// <summary>
     /// The authority.
     /// </summary>
-    public V3.Dtos.OutboundMmo.Authority Authority { get; set; }
+    public Authority Authority { get; set; }
 
     /// <summary>
     /// The case type1.
@@ -68,12 +68,12 @@ public class StorageDocument
     /// <summary>
     /// Where is the catch exported to
     /// </summary>
-    public V3.Dtos.OutboundMmo.Country ExportedTo { get; set; }
+    public Country ExportedTo { get; set; }
 
     /// <summary>
     /// Details of the Exporter organisation.
     /// </summary>
-    public V3.Dtos.OutboundMmo.Exporter Exporter { get; set; }
+    public Exporter Exporter { get; set; }
 
     /// <summary>
     /// The exporter identifier.
@@ -88,7 +88,7 @@ public class StorageDocument
     /// <summary>
     /// Product details.
     /// </summary>
-    public IEnumerable<V3.Dtos.OutboundMmo.Product> Products { get; set; }
+    public IEnumerable<Product> Products { get; set; }
 
     /// <summary>
     /// Indicates if this was requested by an admin
@@ -98,12 +98,12 @@ public class StorageDocument
     /// <summary>
     /// The storage facilities.
     /// </summary>
-    public IEnumerable<V3.Dtos.OutboundMmo.StorageFacility> StorageFacilities { get; set; }
+    public IEnumerable<StorageFacility> StorageFacilities { get; set; }
 
     /// <summary>
     /// The transportation.
     /// </summary>
-    public V3.Dtos.OutboundMmo.Transportation Transportation { get; set; }
+    public Transportation Transportation { get; set; }
 
     /// <summary>
     /// The version.

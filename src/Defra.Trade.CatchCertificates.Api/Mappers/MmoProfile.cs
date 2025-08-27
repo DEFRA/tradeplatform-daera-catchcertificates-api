@@ -12,28 +12,19 @@ public class MmoProfile : Profile
 {
     public MmoProfile()
     {
-        // Catch Certificate Cases V2
-        CreateDataRowToModelMapping<CatchCertificateCaseDataRow, V2.Dtos.Mmo.CatchCertificateCase>(schemaRange: 1..2);
+        // Catch Certificate Cases
+        CreateDataRowToModelMapping<CatchCertificateCaseDataRow, V2.Dtos.Mmo.CatchCertificateCase>(schemaRange: 1..3);
         CreateModelToDataRowMapping<V2.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>(schemaVersion: 2);
-
-        // Processing Statements V2
-        CreateDataRowToModelMapping<ProcessingStatementDataRow, V2.Dtos.Mmo.ProcessingStatement>(schemaRange: 1..2);
-        CreateModelToDataRowMapping<V2.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>(schemaVersion: 2);
-
-        // Storage Documents V2
-        CreateDataRowToModelMapping<StorageDocumentDataRow, V2.Dtos.Mmo.StorageDocument>(schemaRange: 1..2);
-        CreateModelToDataRowMapping<V2.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>(schemaVersion: 2);
-
-        // Catch Certificate Cases V3
-        CreateDataRowToModelMapping<CatchCertificateCaseDataRow, V3.Dtos.Mmo.CatchCertificateCase>(schemaRange: 3..3);
         CreateModelToDataRowMapping<V3.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>(schemaVersion: 3);
 
-        // Processing Statements V3
-        CreateDataRowToModelMapping<ProcessingStatementDataRow, V3.Dtos.Mmo.ProcessingStatement>(schemaRange: 3..3);
+        // Processing Statements
+        CreateDataRowToModelMapping<ProcessingStatementDataRow, V2.Dtos.Mmo.ProcessingStatement>(schemaRange: 1..3);
+        CreateModelToDataRowMapping<V2.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>(schemaVersion: 2);
         CreateModelToDataRowMapping<V3.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>(schemaVersion: 3);
 
-        // Storage Documents V3
-        CreateDataRowToModelMapping<StorageDocumentDataRow, V3.Dtos.Mmo.StorageDocument>(schemaRange: 3..3);
+        // Storage Documents
+        CreateDataRowToModelMapping<StorageDocumentDataRow, V2.Dtos.Mmo.StorageDocument>(schemaRange: 1..3);
+        CreateModelToDataRowMapping<V2.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>(schemaVersion: 2);
         CreateModelToDataRowMapping<V3.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>(schemaVersion: 3);
     }
 

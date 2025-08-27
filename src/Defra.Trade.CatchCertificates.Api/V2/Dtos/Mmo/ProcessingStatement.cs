@@ -6,65 +6,7 @@ using Defra.Trade.CatchCertificates.Api.Models;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 
-public class ProcessingStatement : MessageCore<V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>
+public class ProcessingStatement : V3.Dtos.Mmo.ProcessingStatement
 {
-    /// <summary>
-    /// The authority.
-    /// </summary>
-    public V3.Dtos.Mmo.Authority Authority { get; set; }
-
-    /// <summary>
-    /// The catches.
-    /// </summary>
-    public IEnumerable<V3.Dtos.Mmo.Catch> Catches { get; set; }
-
-    /// <summary>
-    /// The exporter identifier.
-    /// </summary>
-    public string ExporterId { get; set; }
-
-    /// <summary>
-    /// The health certificate date.
-    /// </summary>
-    public string HealthCertificateDate { get; set; }
-
-    /// <summary>
-    /// The health certificate number.
-    /// </summary>
-    public string HealthCertificateNumber { get; set; }
-
-    /// <summary>
-    /// The person responsible.
-    /// </summary>
-    public string PersonResponsible { get; set; }
-
-    /// <summary>
-    /// The plant address.
-    /// </summary>
-    public V3.Dtos.Mmo.Address PlantAddress { get; set; }
-
-    /// <summary>
-    /// The plant approval number.
-    /// </summary>
-    public string PlantApprovalNumber { get; set; }
-
-    /// <summary>
-    /// The plant date of acceptance.
-    /// </summary>
-    public string PlantDateOfAcceptance { get; set; }
-
-    /// <summary>
-    /// The name of the plant.
-    /// </summary>
-    public string PlantName { get; set; }
-
-    /// <summary>
-    /// The processed fishery products.
-    /// </summary>
-    public string ProcessedFisheryProducts { get; set; }
-
-    /// <summary>
-    /// The version.
-    /// </summary>
-    public int? Version { get; set; }
+   
 }

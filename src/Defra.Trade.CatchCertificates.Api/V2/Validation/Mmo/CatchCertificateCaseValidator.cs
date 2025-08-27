@@ -10,7 +10,7 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateCase>
 {
     public CatchCertificateCaseValidator(
-        IValidator<Landing> landingValidator,
+        IValidator<V3.Dtos.Mmo.Landing> landingValidator,
         IValidator<V3.Dtos.Mmo.Country> countryValidator,
         IValidator<V3.Dtos.Mmo.Exporter> exporterValidator,
         IValidator<V3.Dtos.Mmo.Audit> auditValidator,
