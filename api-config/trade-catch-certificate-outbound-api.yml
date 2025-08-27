@@ -35,31 +35,6 @@ apis:
         samplingType: fixed
         percentage: 100
       enableHttpCorrelationHeaders: true
-  - name: trade-catch-certificate-outbound-api-v3-dev
-    type: http
-    displayName: DAERA Fish Export Service Data - DEV
-    description: This API provides a mechanism for Defra to share fish exports data with DAERA to improve the efficiency of the movement and inspection of fisheries products.
-    serviceUrl: https://defra.mock
-    openApiSpec: v3\swagger.json
-    policy: policies\outboundApiPolicy.xml
-    suffix: daera-fish-export-service-data/dev
-    subscriptionRequired: false
-    apiVersion: v3
-    apiVersionDescription: Version 3 DAERA Fish Export Service Data API DEV
-    apiVersionSetId: trade-catch-certificate-outbound-api-dev
-    products: trd-dev
-    authenticationSettings:
-      oAuth2:
-        authorizationServerId: OAuth-Server
-      subscriptionKeyRequired: false
-    diagnostic:
-      name: applicationinsights
-      alwaysLog: allErrors
-      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
-      sampling:
-        samplingType: fixed
-        percentage: 100
-      enableHttpCorrelationHeaders: true
   - name: trade-catch-certificate-outbound-api-v2
     type: http
     displayName: DAERA Fish Export Service Data
@@ -86,6 +61,31 @@ apis:
         percentage: 100
       enableHttpCorrelationHeaders: true
     dependsOn: trade-catch-certificate-outbound-api-v2-dev
+  - name: trade-catch-certificate-outbound-api-v3-dev
+    type: http
+    displayName: DAERA Fish Export Service Data - DEV
+    description: This API provides a mechanism for Defra to share fish exports data with DAERA to improve the efficiency of the movement and inspection of fisheries products.
+    serviceUrl: https://defra.mock
+    openApiSpec: v3\swagger.json
+    policy: policies\outboundApiPolicy.xml
+    suffix: daera-fish-export-service-data/dev
+    subscriptionRequired: false
+    apiVersion: v3
+    apiVersionDescription: Version 3 DAERA Fish Export Service Data API DEV
+    apiVersionSetId: trade-catch-certificate-outbound-api-dev
+    products: trd-dev
+    authenticationSettings:
+      oAuth2:
+        authorizationServerId: OAuth-Server
+      subscriptionKeyRequired: false
+    diagnostic:
+      name: applicationinsights
+      alwaysLog: allErrors
+      loggerId: "#{{ Environment.Name }}TRD#{{ nc-function-infrastructure }}#{{ nc-resource-appinsights }}1001"
+      sampling:
+        samplingType: fixed
+        percentage: 100
+      enableHttpCorrelationHeaders: true
   - name: trade-catch-certificate-outbound-api-v3
     type: http
     displayName: DAERA Fish Export Service Data
