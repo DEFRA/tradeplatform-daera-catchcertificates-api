@@ -3,11 +3,7 @@
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 
-/// <summary>
-/// Schema for Storage Document data transfer to Defra Trade (CHIP).
-/// </summary>
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty", Justification = "<Pending>")]
-public class StorageDocument : V3.Dtos.Mmo.StorageDocument
+public class Landing : V3.Dtos.Mmo.Landing
 {
-   
 }

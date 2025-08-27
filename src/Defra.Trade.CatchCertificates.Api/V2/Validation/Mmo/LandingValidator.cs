@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 
-public class LandingValidator : AbstractValidator<V3.Dtos.Mmo.Landing>
+public class LandingValidator : AbstractValidator<Dtos.Mmo.Landing>
 {
     public LandingValidator(IValidator<V3.Dtos.Mmo.LandingValidation> landingValidationValidator)
     {
