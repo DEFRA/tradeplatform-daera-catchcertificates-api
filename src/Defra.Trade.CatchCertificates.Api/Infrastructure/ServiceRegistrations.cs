@@ -33,6 +33,11 @@ public static class ServiceRegistrations
         return services
             .AddValidatorsFromAssemblyContaining<Startup>(lifetime: ServiceLifetime.Transient)
             .AddScoped<GenericMmoService<V2.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>, V2.Services.MmoCatchCertificateCaseService>()
+            .AddScoped<GenericMmoService<V2.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>, V2.Services.MmoProcessingStatementService>()
+            .AddScoped<GenericMmoService<V2.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>, V2.Services.MmoStorageDocumentService>()
+            .AddScoped<GenericMmoService<V3.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>, V3.Services.MmoCatchCertificateCaseService>()
+            .AddScoped<GenericMmoService<V3.Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow>, V3.Services.MmoProcessingStatementService>()
+            .AddScoped<GenericMmoService<V3.Dtos.Mmo.StorageDocument, StorageDocumentDataRow>, V3.Services.MmoStorageDocumentService>()
             .AddScoped<ICatchCertificateCaseRepository, CatchCertificateCaseSqlRepository>()
             .AddScoped<IProcessingStatementRepository, ProcessingStatementSqlRepository>()
             .AddScoped<IStorageDocumentRepository, StorageDocumentSqlRepository>()

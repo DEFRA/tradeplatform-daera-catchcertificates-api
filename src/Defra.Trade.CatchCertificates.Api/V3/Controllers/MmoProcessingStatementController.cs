@@ -4,13 +4,11 @@
 using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using AutoMapper;
-using Defra.Trade.CatchCertificates.Api.Data;
-using Defra.Trade.CatchCertificates.Api.Extensions;
+using Defra.Trade.CatchCertificates.Api.Models;
+using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using CommonDtos = Defra.Trade.Common.Api.Dtos;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
@@ -26,21 +24,13 @@ namespace Defra.Trade.CatchCertificates.Api.V3.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class MmoProcessingStatementController : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly IProcessingStatementRepository _repository;
-    private readonly ILogger<MmoProcessingStatementController> _logger;
+    private readonly GenericMmoService<Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow> _mmoServcie;
 
     public MmoProcessingStatementController(
-        IMapper mapper,
-        IProcessingStatementRepository repository,
-        ILogger<MmoProcessingStatementController> logger)
+        GenericMmoService<Dtos.Mmo.ProcessingStatement, ProcessingStatementDataRow> mmoServcie)
     {
-        ArgumentNullException.ThrowIfNull(mapper);
-        ArgumentNullException.ThrowIfNull(repository);
-        ArgumentNullException.ThrowIfNull(logger);
-        _mapper = mapper;
-        _repository = repository;
-        _logger = logger;
+        ArgumentNullException.ThrowIfNull(mmoServcie);
+        _mmoServcie = mmoServcie;
     }
 
     /// <summary>
@@ -60,29 +50,7 @@ public class MmoProcessingStatementController : ControllerBase
     public async Task<IActionResult> Upsert([FromBody] DtosMmo.ProcessingStatement statement)
     {
         ArgumentNullException.ThrowIfNull(statement);
-        var existing = await _repository.GetByDocumentNumberAsync(statement.DocumentNumber);
-
-        if (existing is null)
-        {
-            var dataRow = _mapper.Map<Models.ProcessingStatementDataRow>(statement);
-
-            await _repository.CreateAsync(dataRow);
-
-            _logger.MmoProcessingStatementCreateSuccess(statement.DocumentNumber);
-        }
-        else
-        {
-            var existingTimestamp = existing.LastUpdated ?? existing.CreatedOn;
-
-            if (statement.LastUpdated >= existingTimestamp)
-            {
-                existing = _mapper.Map(statement, existing);
-
-                await _repository.UpdateAsync(existing);
-
-                _logger.MmoProcessingStatementUpdateSuccess(statement.DocumentNumber);
-            }
-        }
+        await _mmoServcie.UpsertItem(statement);
 
         return NoContent();
     }

@@ -8,6 +8,7 @@ using Defra.Trade.CatchCertificates.Api.Data;
 using Defra.Trade.CatchCertificates.Api.Models;
 using Defra.Trade.CatchCertificates.Api.V3.Controllers;
 using Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
+using Defra.Trade.CatchCertificates.Api.V3.Services;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,14 +22,16 @@ public class MmoProcessingStatementControllerTests
     private readonly MmoProcessingStatementController _sut;
     private readonly Mock<IMapper> _mapper;
     private readonly Mock<IProcessingStatementRepository> _repository;
-    private readonly Mock<ILogger<MmoProcessingStatementController>> _logger;
+    private readonly Mock<ILogger<MmoProcessingStatementService>> _logger;
+    private readonly MmoProcessingStatementService _service;
 
     public MmoProcessingStatementControllerTests()
     {
         _mapper = new(MockBehavior.Strict);
         _repository = new(MockBehavior.Strict);
         _logger = new();
-        _sut = new(_mapper.Object, _repository.Object, _logger.Object);
+        _service = new(_mapper.Object, _repository.Object, _logger.Object);
+        _sut = new(_service);
     }
 
     [Fact]

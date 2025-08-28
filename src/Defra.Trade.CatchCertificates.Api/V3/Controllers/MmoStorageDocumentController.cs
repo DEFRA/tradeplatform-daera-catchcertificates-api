@@ -4,13 +4,11 @@
 using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using AutoMapper;
-using Defra.Trade.CatchCertificates.Api.Data;
-using Defra.Trade.CatchCertificates.Api.Extensions;
+using Defra.Trade.CatchCertificates.Api.Models;
+using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using CommonDtos = Defra.Trade.Common.Api.Dtos;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
@@ -26,21 +24,13 @@ namespace Defra.Trade.CatchCertificates.Api.V3.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class MmoStorageDocumentController : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly IStorageDocumentRepository _repository;
-    private readonly ILogger<MmoStorageDocumentController> _logger;
+    private readonly GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> _mmoServcie;
 
     public MmoStorageDocumentController(
-        IMapper mapper,
-        IStorageDocumentRepository repository,
-        ILogger<MmoStorageDocumentController> logger)
+       GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> mmoServcie)
     {
-        ArgumentNullException.ThrowIfNull(mapper);
-        ArgumentNullException.ThrowIfNull(repository);
-        ArgumentNullException.ThrowIfNull(logger);
-        _mapper = mapper;
-        _repository = repository;
-        _logger = logger;
+        ArgumentNullException.ThrowIfNull(mmoServcie);
+        _mmoServcie = mmoServcie;
     }
 
     /// <summary>
@@ -60,29 +50,7 @@ public class MmoStorageDocumentController : ControllerBase
     public async Task<IActionResult> Upsert([FromBody] DtosMmo.StorageDocument document)
     {
         ArgumentNullException.ThrowIfNull(document);
-        var existing = await _repository.GetByDocumentNumberAsync(document.DocumentNumber);
-
-        if (existing is null)
-        {
-            var dataRow = _mapper.Map<Models.StorageDocumentDataRow>(document);
-
-            await _repository.CreateAsync(dataRow);
-
-            _logger.MmoStorageDocumentCreateSuccess(document.DocumentNumber);
-        }
-        else
-        {
-            var existingTimestamp = existing.LastUpdated ?? existing.CreatedOn;
-
-            if (document.LastUpdated >= existingTimestamp)
-            {
-                existing = _mapper.Map(document, existing);
-
-                await _repository.UpdateAsync(existing);
-
-                _logger.MmoStorageDocumentUpdateSuccess(document.DocumentNumber);
-            }
-        }
+        await _mmoServcie.UpsertItem(document);
 
         return NoContent();
     }
