@@ -2,6 +2,7 @@
 // Licensed under the Open Government License v3.0.
 
 using Defra.Trade.CatchCertificates.Api.Data;
+using Defra.Trade.CatchCertificates.Api.Models;
 using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Sql.Infrastructure;
 using FluentValidation;
@@ -31,6 +32,7 @@ public static class ServiceRegistrations
     {
         return services
             .AddValidatorsFromAssemblyContaining<Startup>(lifetime: ServiceLifetime.Transient)
+            .AddScoped<GenericMmoService<V2.Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow>, V2.Services.MmoCatchCertificateCaseService>()
             .AddScoped<ICatchCertificateCaseRepository, CatchCertificateCaseSqlRepository>()
             .AddScoped<IProcessingStatementRepository, ProcessingStatementSqlRepository>()
             .AddScoped<IStorageDocumentRepository, StorageDocumentSqlRepository>()
