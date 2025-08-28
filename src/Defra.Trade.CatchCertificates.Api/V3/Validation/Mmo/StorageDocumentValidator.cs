@@ -20,28 +20,28 @@ public class StorageDocumentValidator : AbstractValidator<StorageDocument>
 
         RuleFor(x => x.Version).Equal(3);
 
+        RuleFor(x => x.Authority).NotNull().SetValidator(authorityValidator);
+
+        RuleFor(x => x.CompanyName).NotNull();
+
+        RuleFor(x => x.CorrelationId).NotNull();
+
+        RuleFor(x => x.DA).NotNull();
+
+        RuleFor(x => x.ExportedTo).SetValidator(countryValidator);
+
         RuleFor(x => x.Exporter).SetValidator(exporterValidator);
 
         RuleFor(x => x.NumberOfFailedSubmissions).NotNull();
 
-        RuleFor(x => x.CompanyName).NotNull();
-
         RuleFor(x => x.Products)
             .NotNull()
             .ForEach(x => x.SetValidator(productValidator));
-
-        RuleFor(x => x.ExportedTo).SetValidator(countryValidator);
-
-        RuleFor(x => x.Authority).NotNull().SetValidator(authorityValidator);
-
-        RuleFor(x => x.Transportation).SetValidator(transportationValidator);
-
-        RuleFor(x => x.DA).NotNull();
-
-        RuleFor(x => x.CorrelationId).NotNull();
-
+       
         RuleFor(x => x.RequestedByAdmin).NotNull();
 
         RuleFor(x => x.StorageFacilities).NotNull();
+
+        RuleFor(x => x.Transportation).SetValidator(transportationValidator);
     }
 }

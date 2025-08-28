@@ -10,28 +10,59 @@ public class LandingValidator : AbstractValidator<Landing>
 {
     public LandingValidator(IValidator<LandingValidation> landingValidationValidator)
     {
-        RuleFor(x => x.Status)
+
+        RuleFor(x => x.CatchArea)
+            .NotNull();
+
+        RuleFor(x => x.CnCode)
+           .NotNull();
+
+        RuleFor(x => x.CommodityCodeDescription)
+            .NotNull();
+
+        RuleFor(x => x.ExclusiveEconomicZones)
+            .Must(x => x.HasValue);
+
+        RuleFor(x => x.FishingLicenceNumber)
+           .NotNull();
+
+        RuleFor(x => x.Flag)
+           .NotNull();
+
+        RuleFor(x => x.GearType)
+            .NotNull();
+
+        RuleFor(x => x.HighSeasArea)
+            .NotNull();
+
+        RuleFor(x => x.HomePort)
             .NotNull();
 
         RuleFor(x => x.Id)
             .NotNull();
 
-        RuleFor(x => x.Species)
-            .NotNull();
+        RuleFor(x => x.NumberOfTotalSubmissions)
+           .Must(x => x > 0);
 
-        RuleFor(x => x.CnCode)
-            .NotNull();
+        RuleFor(x => x.Presentation)
+           .NotNull();
 
-        RuleFor(x => x.CommodityCodeDescription)
-            .NotNull();
+        RuleFor(x => x.Rfmo)
+           .NotNull();
 
         RuleFor(x => x.ScientificName)
             .NotNull();
 
+        RuleFor(x => x.Species)
+            .NotNull();
+
+        RuleFor(x => x.StartDate)
+           .NotNull();
+
         RuleFor(x => x.State)
             .NotNull();
 
-        RuleFor(x => x.Presentation)
+        RuleFor(x => x.Status)
             .NotNull();
 
         RuleFor(x => x.VesselName)
@@ -43,41 +74,11 @@ public class LandingValidator : AbstractValidator<Landing>
         RuleFor(x => x.VesselLength)
             .Must(x => x > 0);
 
-        RuleFor(x => x.Weight)
-            .Must(x => x > 0);
-
-        RuleFor(x => x.NumberOfTotalSubmissions)
-            .Must(x => x > 0);
-
         RuleFor(x => x.VesselAdministration)
             .NotNull();
 
-        RuleFor(x => x.Flag)
-            .NotNull();
-
-        RuleFor(x => x.HomePort)
-            .NotNull();
-
-        RuleFor(x => x.CatchArea)
-            .NotNull();
-
-        RuleFor(x => x.FishingLicenceNumber)
-            .NotNull();
-
-        RuleFor(x => x.ExclusiveEconomicZones)
-            .Must(x => x.HasValue);
-
-        RuleFor(x => x.GearType)
-            .NotNull();
-
-        RuleFor(x => x.Rfmo)
-            .NotNull();
-
-        RuleFor(x => x.StartDate)
-            .NotNull();
-
-        RuleFor(x => x.HighSeasArea)
-            .NotNull();
+        RuleFor(x => x.Weight)
+            .Must(x => x > 0);
 
         RuleFor(x => x.Validation)
             .NotNull()

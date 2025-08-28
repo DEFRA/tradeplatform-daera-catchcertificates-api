@@ -28,13 +28,13 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class MmoStorageDocumentController : ControllerBase
 {
-    private readonly GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> _mmoServcie;
+    private readonly GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> _v2MmoServcie;
 
     public MmoStorageDocumentController(
-       GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> mmoServcie)
+       GenericMmoService<Dtos.Mmo.StorageDocument, StorageDocumentDataRow> v2MmoServcie)
     {
-        ArgumentNullException.ThrowIfNull(mmoServcie);
-        _mmoServcie = mmoServcie;
+        ArgumentNullException.ThrowIfNull(v2MmoServcie);
+        _v2MmoServcie = v2MmoServcie;
     }
 
     /// <summary>
@@ -54,7 +54,8 @@ public class MmoStorageDocumentController : ControllerBase
     public async Task<IActionResult> Upsert([FromBody] DtosMmo.StorageDocument document)
     {
         ArgumentNullException.ThrowIfNull(document);
-        await _mmoServcie.UpsertItem(document);
+
+        await _v2MmoServcie.UpsertItem(document);
 
         return NoContent();
     }

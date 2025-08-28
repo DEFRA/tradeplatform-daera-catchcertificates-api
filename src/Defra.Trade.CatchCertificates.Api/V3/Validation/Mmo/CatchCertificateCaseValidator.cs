@@ -21,6 +21,15 @@ public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateC
         RuleFor(x => x.Version)
             .Must(x => x.Equals(3));
 
+        RuleForEach(x => x.Audits)
+            .SetValidator(auditValidator);
+
+        RuleFor(x => x.CertStatus)
+           .NotNull();
+
+        RuleFor(x => x.DA)
+           .NotNull();
+
         RuleFor(x => x.Exporter)
             .SetValidator(exporterValidator)
             .ChildRules(exporter =>
@@ -33,11 +42,11 @@ public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateC
             .NotNull()
             .SetValidator(countryValidator);
 
-        RuleFor(x => x.CertStatus)
+        RuleFor(x => x.FailureIrrespectiveOfRisk)
             .NotNull();
 
-        RuleFor(x => x.DA)
-           .NotNull();
+        RuleFor(x => x.MultiVesselSchedule)
+            .NotNull();
 
         RuleFor(x => x.Transportation)
             .NotNull()
@@ -46,13 +55,5 @@ public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateC
         RuleForEach(x => x.Landings)
             .SetValidator(landingValidator);
 
-        RuleForEach(x => x.Audits)
-            .SetValidator(auditValidator);
-
-        RuleFor(x => x.FailureIrrespectiveOfRisk)
-            .NotNull();
-
-        RuleFor(x => x.MultiVesselSchedule)
-            .NotNull();
     }
 }

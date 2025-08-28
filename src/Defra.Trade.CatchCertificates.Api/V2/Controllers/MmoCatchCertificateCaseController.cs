@@ -23,13 +23,13 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
 public class MmoCatchCertificateCaseController : ControllerBase
 {
 
-    private readonly GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> _mmoServcie;
+    private readonly GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> _v2MmoServcie;
 
-    public MmoCatchCertificateCaseController(GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> mmoServcie)
+    public MmoCatchCertificateCaseController(GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> v2MmoServcie)
 
     {
-        ArgumentNullException.ThrowIfNull(mmoServcie);
-        _mmoServcie = mmoServcie;
+        ArgumentNullException.ThrowIfNull(v2MmoServcie);
+        _v2MmoServcie = v2MmoServcie;
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class MmoCatchCertificateCaseController : ControllerBase
     [ProducesResponseType(typeof(Common.Api.Dtos.CommonProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Upsert([FromBody] Dtos.Mmo.CatchCertificateCase certificate)
     {
-        await _mmoServcie.UpsertItem(certificate);
+        await _v2MmoServcie.UpsertItem(certificate);
 
         return NoContent();
     }
