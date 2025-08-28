@@ -15,11 +15,11 @@ public class OutboundMmoProfile : Profile
         CreateMap<V2Internal.CatchCertificateCase, V2External.CatchCertificateCase>();
         CreateMap<V2Internal.ProcessingStatement, V2External.ProcessingStatement>();
         CreateMap<V2Internal.StorageDocument, V2External.StorageDocument>();
-        
+
         CreateMap<V3Internal.Address, V2External.Address>();
         CreateMap<V3Internal.Audit, V2External.Audit>();
         CreateMap<V3Internal.Authority, V2External.Authority>();
-        CreateMap<V3Internal.Catch,  V2External.Catch>();
+        CreateMap<V3Internal.Catch, V2External.Catch>();
         CreateMap<V3Internal.CatchCertificateCase, V2External.CatchCertificateCase>();
         CreateMap<V3Internal.CatchValidation, V2External.CatchValidation>();
         CreateMap<V3Internal.Country, V2External.Country>();

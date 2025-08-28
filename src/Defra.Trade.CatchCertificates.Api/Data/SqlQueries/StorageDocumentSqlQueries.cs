@@ -52,7 +52,7 @@ internal static class StorageDocumentSqlQueries
             OUTPUT inserted.Id
             VALUES (
                 @documentNumber,
-                @data, 
+                @data,
                 @schemaVersion,
                 @createdOn,
                 @createdBy,
@@ -61,7 +61,7 @@ internal static class StorageDocumentSqlQueries
 
     internal const string Update =
         @"UPDATE [mmo].[StorageDocument]
-            SET [Data]=@data, 
+            SET [Data]=@data,
                 [SchemaVersion]=@schemaVersion,
                 [LastUpdated]=@lastUpdated,
                 [LastUpdatedBy]=@lastUpdatedBy,

@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 using Defra.Trade.CatchCertificates.Api.Models;
 
 namespace Defra.Trade.CatchCertificates.Api.Data;
+
 public interface IDataRowRepository<TDataRow> where TDataRow : DataRow
 {
     Task<TDataRow> CreateAsync(TDataRow dataRow);
+
     Task<TDataRow> GetByDocumentNumberAsync(string documentNumber);
+
     Task<Tuple<IEnumerable<TDataRow>, long>> GetPaginatedAsync(long pageNumber, long pageSize);
+
     Task<TDataRow> UpdateAsync(TDataRow dataRow);
 }

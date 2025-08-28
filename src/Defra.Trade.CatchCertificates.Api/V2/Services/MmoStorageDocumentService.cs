@@ -15,5 +15,6 @@ public class MmoStorageDocumentService(IMapper mapper, IStorageDocumentRepositor
     : GenericMmoService<StorageDocument, StorageDocumentDataRow>(mapper, repository, logger)
 {
     protected override void LogCreateSuccess(string documentNumber) => _logger.MmoStorageDocumentCreateSuccess(documentNumber);
+
     protected override void LogUpdateSuccess(string documentNumber) => _logger.MmoStorageDocumentUpdateSuccess(documentNumber);
 }

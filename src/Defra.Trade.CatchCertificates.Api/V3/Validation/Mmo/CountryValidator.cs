@@ -17,6 +17,6 @@ public class CountryValidator : AbstractValidator<Dtos.Mmo.Country>
 
         RuleFor(x => x.IsoCodeAlpha3);
 
-        RuleFor(x => x.IsoNumericCode); 
+        RuleFor(x => x.IsoNumericCode);
     }
 }

@@ -27,7 +27,7 @@ public class Landing
     [JsonPropertyName("dateDataReceived")]
     public string DataReceivedDate { get; set; }
 
-    public bool? ExclusiveEconomicZones { get;set; }
+    public bool? ExclusiveEconomicZones { get; set; }
 
     public string FishingLicenceNumber { get; set; }
 
@@ -39,7 +39,7 @@ public class Landing
 
     public string HomePort { get; set; }
 
-    public string HighSeasArea { get;set; }
+    public string HighSeasArea { get; set; }
 
     public string Id { get; set; }
 

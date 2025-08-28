@@ -15,7 +15,6 @@ public abstract class GenericMmoService<TIncoming, TDataRow>
     where TIncoming : MessageCore<Exporter, Country>
     where TDataRow : DataRow
 {
-
     private readonly IMapper _mapper;
     private readonly IDataRowRepository<TDataRow> _repository;
     protected readonly ILogger _logger;
@@ -58,9 +57,9 @@ public abstract class GenericMmoService<TIncoming, TDataRow>
                 LogUpdateSuccess(item.DocumentNumber);
             }
         }
-
     }
 
     protected abstract void LogCreateSuccess(string documentNumber);
+
     protected abstract void LogUpdateSuccess(string documentNumber);
 }

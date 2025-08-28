@@ -4,15 +4,11 @@
 using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using AutoMapper;
-using Defra.Trade.CatchCertificates.Api.Data;
-using Defra.Trade.CatchCertificates.Api.Extensions;
 using Defra.Trade.CatchCertificates.Api.Models;
 using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 using CommonDtos = Defra.Trade.Common.Api.Dtos;
 using DtosMmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;

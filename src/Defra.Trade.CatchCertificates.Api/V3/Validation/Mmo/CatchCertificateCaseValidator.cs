@@ -54,6 +54,5 @@ public class CatchCertificateCaseValidator : AbstractValidator<CatchCertificateC
 
         RuleForEach(x => x.Landings)
             .SetValidator(landingValidator);
-
     }
 }

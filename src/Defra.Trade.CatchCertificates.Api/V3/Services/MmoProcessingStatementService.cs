@@ -15,5 +15,6 @@ public class MmoProcessingStatementService(IMapper mapper, IProcessingStatementR
     : GenericMmoService<ProcessingStatement, ProcessingStatementDataRow>(mapper, repository, logger)
 {
     protected override void LogCreateSuccess(string documentNumber) => _logger.MmoProcessingStatementCreateSuccess(documentNumber);
+
     protected override void LogUpdateSuccess(string documentNumber) => _logger.MmoProcessingStatementUpdateSuccess(documentNumber);
 }

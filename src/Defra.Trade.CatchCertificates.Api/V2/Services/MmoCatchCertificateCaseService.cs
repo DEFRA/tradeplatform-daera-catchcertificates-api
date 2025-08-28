@@ -15,5 +15,6 @@ public class MmoCatchCertificateCaseService(IMapper mapper, ICatchCertificateCas
     : GenericMmoService<CatchCertificateCase, CatchCertificateCaseDataRow>(mapper, repository, logger)
 {
     protected override void LogCreateSuccess(string documentNumber) => _logger.MmoCatchCertificateCaseCreateSuccess(documentNumber);
+
     protected override void LogUpdateSuccess(string documentNumber) => _logger.MmoCatchCertificateCaseUpdateSuccess(documentNumber);
 }

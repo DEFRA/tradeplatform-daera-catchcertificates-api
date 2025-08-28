@@ -15,4 +15,3 @@ public class StorageFacilityValidator : AbstractValidator<StorageFacility>
         RuleFor(x => x.Name).NotNull();
     }
 }
-

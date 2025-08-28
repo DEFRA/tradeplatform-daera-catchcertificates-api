@@ -22,7 +22,6 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class MmoCatchCertificateCaseController : ControllerBase
 {
-
     private readonly GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> _v2MmoServcie;
 
     public MmoCatchCertificateCaseController(GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> v2MmoServcie)

@@ -10,7 +10,6 @@ public class LandingValidator : AbstractValidator<Landing>
 {
     public LandingValidator(IValidator<LandingValidation> landingValidationValidator)
     {
-
         RuleFor(x => x.CatchArea)
             .NotNull();
 

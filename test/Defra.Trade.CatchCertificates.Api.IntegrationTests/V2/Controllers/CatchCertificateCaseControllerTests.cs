@@ -10,7 +10,6 @@ using Defra.Trade.CatchCertificates.Api.IntegrationTests.Helpers;
 using Defra.Trade.CatchCertificates.Api.IntegrationTests.Infrastructure;
 using Defra.Trade.Common.Api.Dtos;
 using FluentAssertions;
-using FluentAssertions.Equivalency;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using Xunit;

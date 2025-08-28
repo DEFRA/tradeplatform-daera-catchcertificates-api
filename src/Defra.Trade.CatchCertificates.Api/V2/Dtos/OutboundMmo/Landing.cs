@@ -78,7 +78,7 @@ public class Landing
     public string Flag { get; set; }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public string GearType { get; set; }
 
@@ -209,7 +209,7 @@ public class Landing
     public bool? SpeciesOverriddenByAdmin { get; set; }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public string StartDate { get; set; }
 

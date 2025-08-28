@@ -2,8 +2,6 @@
 // Licensed under the Open Government License v3.0.
 
 using AutoFixture;
-using V2Mmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
-using V3Mmo = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 using Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 using FluentAssertions;
 using FluentValidation;
@@ -11,6 +9,8 @@ using FluentValidation.Results;
 using FluentValidation.TestHelper;
 using Moq;
 using Xunit;
+using V2Mmo = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V3Mmo = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 
 namespace Defra.Trade.CatchCertificates.Api.Tests.V2.Validation.Mmo;
 
