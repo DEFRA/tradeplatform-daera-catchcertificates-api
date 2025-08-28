@@ -65,7 +65,7 @@ public class LandingValidator : AbstractValidator<Landing>
             .NotNull();
 
         RuleFor(x => x.ExclusiveEconomicZones)
-            .NotEmpty();
+            .Must(x => x.HasValue);
 
         RuleFor(x => x.GearType)
             .NotNull();
