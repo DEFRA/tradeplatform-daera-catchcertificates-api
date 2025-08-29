@@ -21,7 +21,7 @@ apis:
     subscriptionRequired: true
     apiVersion: 2-internal
     apiVersionDescription: Version 2 Trade Catch Certificate DEV APIs
-    apiVersionSetId: trade-catch-certificate-internal-api-dev-v2
+    apiVersionSetId: trade-catch-certificate-internal-api-dev
     products: trd-dev
     operations:
       CreateCatchCertificateCase:
@@ -53,7 +53,7 @@ apis:
     subscriptionRequired: true
     apiVersion: 2-internal
     apiVersionDescription: Trade Catch Certificate Live APIs v2
-    apiVersionSetId: trade-catch-certificate-internal-api-v2
+    apiVersionSetId: trade-catch-certificate-internal-api
     products: trd-prod
     operations:
       CreateCatchCertificateCase:
@@ -86,7 +86,7 @@ apis:
     subscriptionRequired: true
     apiVersion: 3-internal
     apiVersionDescription: Version 3 Trade Catch Certificate DEV APIs
-    apiVersionSetId: trade-catch-certificate-internal-api-dev-v3
+    apiVersionSetId: trade-catch-certificate-internal-api-dev
     products: trd-dev
     operations:
       CreateCatchCertificateCase:
@@ -118,7 +118,7 @@ apis:
     subscriptionRequired: true
     apiVersion: 3-internal
     apiVersionDescription: Trade Catch Certificate Live APIs v3
-    apiVersionSetId: trade-catch-certificate-internal-api-v3
+    apiVersionSetId: trade-catch-certificate-internal-api
     products: trd-prod
     operations:
       CreateCatchCertificateCase:
