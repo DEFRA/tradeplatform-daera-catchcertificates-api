@@ -58,6 +58,11 @@ public class Landing
     public string DataReceivedDate { get; set; }
 
     /// <summary>
+    /// The Exclusive Economic Zones where fish were caught
+    /// </summary>
+    public bool ExclusiveEconomicZones { get; set; }
+
+    /// <summary>
     /// The licence for the vessel used in the landing
     /// </summary>
     public string FishingLicenceNumber { get; set; }
@@ -71,6 +76,18 @@ public class Landing
     /// The flag of the vessel used within the landing
     /// </summary>
     public string Flag { get; set; }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public string GearType { get; set; }
+
+    /// <summary>
+    /// The high seas area fish was caught in
+    /// </summary>
+    /// <remarks>Yes, No</remarks>
+    /// <example>Yes</example>
+    public string HighSeasArea { get; set; }
 
     /// <summary>
     /// The home port of the vessel used within the landing
@@ -139,6 +156,20 @@ public class Landing
     public string Presentation { get; set; }
 
     /// <summary>
+    /// The Regional Fisheries Management Organisation the fish was caught in
+    /// </summary>
+    /// <remarks>e.g. Commission for the Conservation of Antarctic Marine Living Resources (CCAMLR), General Fisheries Commission for the Mediterranean (GFCM),
+    ///          North East Atlantic Fisheries Commission (NEAFC), Northwest Atlantic Fisheries Organization (NAFO),
+    ///          North Pacific Fisheries Commission (NPFC), South East Atlantic Fisheries Organisation (SEAFO),
+    ///          South Pacific Regional Fisheries Management Organisation (SPRFMO),
+    ///          Southern Indian Ocean Fisheries Agreement (SIOFA), Western and Central Pacific Fisheries Commission (WCPFC),
+    ///          Commission for the Conservation of Southern Bluefin Tuna (CCSBT),International Commission for the Conservation of Atlantic Tunas (ICCAT),
+    ///          Indian Ocean Tuna Commission (IOTC), Inter-American Tropical Tuna Commission (IATTC),
+    ///          North Atlantic Salmon Conservation Organization (NASCO)</remarks>
+    /// <example>North Atlantic Salmon Conservation Organization (NASCO)</example>
+    public string Rfmo { get; set; }
+
+    /// <summary>
     /// The landing risk
     /// </summary>
     public Risk Risking { get; set; }
@@ -176,6 +207,11 @@ public class Landing
     /// Are the species details overridden by the admin?
     /// </summary>
     public bool? SpeciesOverriddenByAdmin { get; set; }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public string StartDate { get; set; }
 
     /// <summary>
     /// State of the catch.
