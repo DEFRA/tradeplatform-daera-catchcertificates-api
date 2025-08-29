@@ -23,7 +23,7 @@
       <ApiXmlDoc>$(PkgDefra_Trade_Common_Api)\lib\net8.0\Defra.Trade.Common.Api.xml</ApiXmlDoc>
     </PackageReference>
     <PackageReference Include="Defra.Trade.Common.Audit" Version="3.0.0" />
-    <PackageReference Include="Defra.Trade.Common.ExternalApi" Version="3.0.1" />
+    <PackageReference Include="Defra.Trade.Common.ExternalApi" Version="3.0.3" />
     <PackageReference Include="Defra.Trade.Common.Sql" Version="3.0.1" />
     <PackageReference Include="Defra.Trade.ProtectiveMonitoring" Version="3.0.1" />
   </ItemGroup>

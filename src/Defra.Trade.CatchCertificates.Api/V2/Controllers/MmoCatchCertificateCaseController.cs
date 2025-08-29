@@ -4,13 +4,11 @@
 using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using AutoMapper;
-using Defra.Trade.CatchCertificates.Api.Data;
-using Defra.Trade.CatchCertificates.Api.Extensions;
+using Defra.Trade.CatchCertificates.Api.Models;
+using Defra.Trade.CatchCertificates.Api.Services;
 using Defra.Trade.Common.Api.OpenApi;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
@@ -24,21 +22,13 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class MmoCatchCertificateCaseController : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly ICatchCertificateCaseRepository _repository;
-    private readonly ILogger<MmoCatchCertificateCaseController> _logger;
+    private readonly GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> _v2MmoServcie;
 
-    public MmoCatchCertificateCaseController(
-        IMapper mapper,
-        ICatchCertificateCaseRepository repository,
-        ILogger<MmoCatchCertificateCaseController> logger)
+    public MmoCatchCertificateCaseController(GenericMmoService<Dtos.Mmo.CatchCertificateCase, CatchCertificateCaseDataRow> v2MmoServcie)
+
     {
-        ArgumentNullException.ThrowIfNull(mapper);
-        ArgumentNullException.ThrowIfNull(repository);
-        ArgumentNullException.ThrowIfNull(logger);
-        _mapper = mapper;
-        _repository = repository;
-        _logger = logger;
+        ArgumentNullException.ThrowIfNull(v2MmoServcie);
+        _v2MmoServcie = v2MmoServcie;
     }
 
     /// <summary>
@@ -57,29 +47,7 @@ public class MmoCatchCertificateCaseController : ControllerBase
     [ProducesResponseType(typeof(Common.Api.Dtos.CommonProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Upsert([FromBody] Dtos.Mmo.CatchCertificateCase certificate)
     {
-        var existing = await _repository.GetByDocumentNumberAsync(certificate.DocumentNumber);
-
-        if (existing is null)
-        {
-            var dataRow = _mapper.Map<Models.CatchCertificateCaseDataRow>(certificate);
-
-            await _repository.CreateAsync(dataRow);
-
-            _logger.MmoCatchCertificateCaseCreateSuccess(certificate.DocumentNumber);
-        }
-        else
-        {
-            var existingTimestamp = existing.LastUpdated ?? existing.CreatedOn;
-
-            if (certificate.LastUpdated >= existingTimestamp)
-            {
-                existing = _mapper.Map(certificate, existing);
-
-                await _repository.UpdateAsync(existing);
-
-                _logger.MmoCatchCertificateCaseUpdateSuccess(certificate.DocumentNumber);
-            }
-        }
+        await _v2MmoServcie.UpsertItem(certificate);
 
         return NoContent();
     }

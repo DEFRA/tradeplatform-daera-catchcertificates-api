@@ -1,7 +1,7 @@
 // Copyright DEFRA (c). All rights reserved.
 // Licensed under the Open Government License v3.0.
 
-using Defra.Trade.CatchCertificates.Api.V2.Dtos.Enums;
+using Defra.Trade.CatchCertificates.Api.V3.Dtos.Enums;
 
 namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
