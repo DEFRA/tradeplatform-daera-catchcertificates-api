@@ -12,8 +12,8 @@ apiVersionSets:
 apis:
   - name: trade-catch-certificate-internal-api-v2-dev
     type: http
-    displayName: Trade Catch Certificate Api DEV
-    description: Trade Catch Certificate Apis
+    displayName: Trade Catch Certificate Api DEV v2
+    description: Development Trade Catch Certificate Apis v2
     serviceUrl: https://defra.mock
     openApiSpec: v2-internal\swagger.json
     policy: policies\internalApiGenericPolicy.xml
@@ -44,15 +44,15 @@ apis:
       enableHttpCorrelationHeaders: true
   - name: trade-catch-certificate-internal-api-v2
     type: http
-    displayName: Trade Catch Certificate Api
-    description: Trade Catch Certificate Apis
+    displayName: Trade Catch Certificate Api v2
+    description: Trade Catch Certificate Apis v2
     serviceUrl: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1023.azurewebsites.net/"
     openApiSpec: v2-internal\swagger.json
     policy: policies\internalApiGenericPolicy.xml
     suffix: trade-catch-certificate-internal
     subscriptionRequired: true
     apiVersion: 2-internal
-    apiVersionDescription: Trade Catch Certificate Live APIs
+    apiVersionDescription: Trade Catch Certificate Live APIs v2
     apiVersionSetId: trade-catch-certificate-internal-api
     products: trd-prod
     operations:
@@ -77,8 +77,8 @@ apis:
     dependsOn: trade-catch-certificate-internal-api-v2-dev
   - name: trade-catch-certificate-internal-api-v3-dev
     type: http
-    displayName: Trade Catch Certificate Api DEV
-    description: Trade Catch Certificate Apis
+    displayName: Trade Catch Certificate Api DEV v3
+    description: Trade Catch Certificate Apis v3
     serviceUrl: https://defra.mock
     openApiSpec: v3-internal\swagger.json
     policy: policies\internalApiGenericPolicy.xml
@@ -109,15 +109,15 @@ apis:
       enableHttpCorrelationHeaders: true
   - name: trade-catch-certificate-internal-api-v3
     type: http
-    displayName: Trade Catch Certificate Api
-    description: Trade Catch Certificate Apis
+    displayName: Trade Catch Certificate Api v3
+    description: Trade Catch Certificate Apis v3
     serviceUrl: "https://#{{ Environment.Name }}TRS#{{ nc-function-web }}#{{ nc-resource-webapp }}1023.azurewebsites.net/"
     openApiSpec: v3-internal\swagger.json
     policy: policies\internalApiGenericPolicy.xml
     suffix: trade-catch-certificate-internal
     subscriptionRequired: true
     apiVersion: 3-internal
-    apiVersionDescription: Trade Catch Certificate Live APIs
+    apiVersionDescription: Trade Catch Certificate Live APIs v3
     apiVersionSetId: trade-catch-certificate-internal-api
     products: trd-prod
     operations:
