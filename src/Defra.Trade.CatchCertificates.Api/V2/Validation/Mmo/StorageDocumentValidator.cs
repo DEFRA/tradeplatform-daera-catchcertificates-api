@@ -10,13 +10,13 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 public class StorageDocumentValidator : AbstractValidator<StorageDocument>
 {
     public StorageDocumentValidator(
-        IValidator<Exporter> exporterValidator,
-        IValidator<Product> productValidator,
-        IValidator<Country> countryValidator,
-        IValidator<Authority> authorityValidator,
-        IValidator<Transportation> transportationValidator) : base()
+        IValidator<V3.Dtos.Mmo.Exporter> exporterValidator,
+        IValidator<V3.Dtos.Mmo.Product> productValidator,
+        IValidator<V3.Dtos.Mmo.Country> countryValidator,
+        IValidator<V3.Dtos.Mmo.Authority> authorityValidator,
+        IValidator<V3.Dtos.Mmo.Transportation> transportationValidator) : base()
     {
-        this.AddCoreValidation<StorageDocument, Exporter, Country>();
+        this.AddCoreValidation<StorageDocument, V3.Dtos.Mmo.Exporter, V3.Dtos.Mmo.Country>();
 
         RuleFor(x => x.Version).Equal(2);
 

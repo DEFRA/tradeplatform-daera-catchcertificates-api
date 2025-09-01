@@ -2,7 +2,6 @@
 // Licensed under the Open Government License v3.0.
 
 using AutoFixture;
-using Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
 using Defra.Trade.CatchCertificates.Api.V2.Validation.Mmo;
 using FluentAssertions;
 using FluentValidation;
@@ -10,16 +9,18 @@ using FluentValidation.Results;
 using FluentValidation.TestHelper;
 using Moq;
 using Xunit;
+using V2Dto = Defra.Trade.CatchCertificates.Api.V2.Dtos.Mmo;
+using V3Dto = Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 
 namespace Defra.Trade.CatchCertificates.Api.Tests.V2.Validation.Mmo;
 
 public class ProcessingStatementValidatorTests
 {
-    private readonly Mock<IValidator<Address>> _addressValidator;
-    private readonly Mock<IValidator<Authority>> _authorityValidator;
-    private readonly Mock<IValidator<Catch>> _catchValidator;
-    private readonly Mock<IValidator<Country>> _countryValidator;
-    private readonly Mock<IValidator<Exporter>> _exporterValidator;
+    private readonly Mock<IValidator<V3Dto.Address>> _addressValidator;
+    private readonly Mock<IValidator<V3Dto.Authority>> _authorityValidator;
+    private readonly Mock<IValidator<V3Dto.Catch>> _catchValidator;
+    private readonly Mock<IValidator<V3Dto.Country>> _countryValidator;
+    private readonly Mock<IValidator<V3Dto.Exporter>> _exporterValidator;
     private readonly Fixture _fixture;
     private readonly ProcessingStatementValidator _sut;
 
@@ -38,7 +39,7 @@ public class ProcessingStatementValidatorTests
     public void Validate_Nulls_Error()
     {
         // arrange
-        var model = new ProcessingStatement() { Version = 2 };
+        var model = new V2Dto.ProcessingStatement() { Version = 2 };
 
         // act
         var result = _sut.TestValidate(model);
@@ -90,31 +91,31 @@ public class ProcessingStatementValidatorTests
     public void Validate_Valid_OK()
     {
         // arrange
-        var model = _fixture.Build<ProcessingStatement>()
+        var model = _fixture.Build<V2Dto.ProcessingStatement>()
             .With(x => x.Version, 2)
             .With(x => x.LastUpdatedSystem, "TESTSYS")
             .Create();
 
-        _authorityValidator.Setup(m => m.Validate(It.Is<ValidationContext<Authority>>(ctx => ctx.InstanceToValidate == model.Authority)))
+        _authorityValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Authority>>(ctx => ctx.InstanceToValidate == model.Authority)))
             .Returns(new ValidationResult())
             .Verifiable();
 
         foreach (var @catch in model.Catches)
         {
-            _catchValidator.Setup(m => m.Validate(It.Is<ValidationContext<Catch>>(ctx => ctx.InstanceToValidate == @catch)))
+            _catchValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Catch>>(ctx => ctx.InstanceToValidate == @catch)))
                 .Returns(new ValidationResult())
                 .Verifiable();
         }
 
-        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
+        _countryValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Country>>(ctx => ctx.InstanceToValidate == model.ExportedTo)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
+        _exporterValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Exporter>>(ctx => ctx.InstanceToValidate == model.Exporter)))
             .Returns(new ValidationResult())
             .Verifiable();
 
-        _addressValidator.Setup(m => m.Validate(It.Is<ValidationContext<Address>>(ctx => ctx.InstanceToValidate == model.PlantAddress)))
+        _addressValidator.Setup(m => m.Validate(It.Is<ValidationContext<V3Dto.Address>>(ctx => ctx.InstanceToValidate == model.PlantAddress)))
             .Returns(new ValidationResult())
             .Verifiable();
 
