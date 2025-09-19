@@ -115,7 +115,7 @@ public class LandingValidatorTests
             .WithErrorMessage("'High Seas Area' must not be empty.");
 
         result.ShouldHaveValidationErrorFor(x => x.ExclusiveEconomicZones)
-            .WithErrorMessage("The specified condition was not met for 'Exclusive Economic Zones'.");
+            .WithErrorMessage("'Exclusive Economic Zones' must not be empty.");
 
         result.ShouldHaveValidationErrorFor(x => x.StartDate)
             .WithErrorMessage("'Start Date' must not be empty.");
