@@ -20,7 +20,7 @@ public class LandingValidator : AbstractValidator<Landing>
             .NotNull();
 
         RuleFor(x => x.ExclusiveEconomicZones)
-            .Must(x => x.HasValue);
+            .NotNull();
 
         RuleFor(x => x.FishingLicenceNumber)
            .NotNull();
