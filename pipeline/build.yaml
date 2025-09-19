@@ -81,7 +81,7 @@ extends:
     codeGeneration:
       runClientGeneration: ${{ parameters.runCodeGeneration }}
       ApiClientName: 'Catch.Certificate.Internal'
-      ApiVersion: 'v2-internal'
+      ApiVersion: 'v3-internal'
       Version: ${{ parameters.libraryVersion }}
       IsExternal: false
     publishAPIMApi:
