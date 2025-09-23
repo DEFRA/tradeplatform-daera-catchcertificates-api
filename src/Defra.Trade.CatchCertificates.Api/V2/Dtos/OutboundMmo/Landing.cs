@@ -60,7 +60,7 @@ public class Landing
     /// <summary>
     /// The Exclusive Economic Zones where fish were caught
     /// </summary>
-    public bool ExclusiveEconomicZones { get; set; }
+    public string ExclusiveEconomicZones { get; set; }
 
     /// <summary>
     /// The licence for the vessel used in the landing
