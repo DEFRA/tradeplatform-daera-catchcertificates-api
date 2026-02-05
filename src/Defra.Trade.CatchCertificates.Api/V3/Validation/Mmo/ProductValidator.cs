@@ -22,6 +22,8 @@ public class ProductValidator : AbstractValidator<Product>
 
         RuleFor(x => x.ExportedWeight).NotNull();
 
+        RuleFor(x => x.IssuingCountry).NotNull();
+
         RuleFor(x => x.Validation)
             .NotNull()
             .SetValidator(productValidationValidator);

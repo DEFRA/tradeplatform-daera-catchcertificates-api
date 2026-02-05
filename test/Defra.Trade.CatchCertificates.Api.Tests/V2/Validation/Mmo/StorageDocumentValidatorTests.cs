@@ -111,8 +111,8 @@ public class StorageDocumentValidatorTests
             .WithErrorMessage("'Correlation Id' must not be empty.");
         result.ShouldHaveValidationErrorFor(x => x.RequestedByAdmin)
             .WithErrorMessage("'Requested By Admin' must not be empty.");
-        result.ShouldHaveValidationErrorFor(x => x.StorageFacilities)
-            .WithErrorMessage("'Storage Facilities' must not be empty.");
+        result.ShouldHaveValidationErrorFor(x => x.StorageFacility)
+            .WithErrorMessage("'Storage Facility' must not be empty.");
         result.ShouldHaveValidationErrorFor(x => x.Authority)
             .WithErrorMessage("'Authority' must not be empty.");
 

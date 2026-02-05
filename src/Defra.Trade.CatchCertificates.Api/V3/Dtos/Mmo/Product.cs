@@ -34,6 +34,32 @@ public class Product
     /// The imported weight.
     /// </summary>
     public double? ImportedWeight { get; set; }
+    /// <summary>
+    /// Name of the country issuing the catch certificate
+    /// </summary>
+    public string IssuingCountry { get; set; }
+
+
+    /// <summary>
+    /// net weight of product on arrival provided on /add-product-to-this-consignments
+    /// </summary>
+    public string NetWeightProductArrival { get; set; }
+
+    /// <summary>
+    /// net weight of fishery products on arrival provided on /add-product-to-this-consignments
+    /// </summary>
+
+    public string NetWeightFisheryProductArrival { get; set; }
+
+    /// <summary>
+    /// net weight of product on departure provided on /departure-product-summary
+    /// </summary>
+    public string NetWeightProductDeparture { get; set; }
+
+    /// <summary>
+    /// net weight of fishery products on departure provided on /departure-product-summary
+    /// </summary>
+    public string NetWeightFisheryProductDeparture { get; set; }
 
     /// <summary>
     /// The place of unloading.
