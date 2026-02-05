@@ -39,6 +39,11 @@ public class ProcessingStatement : MessageCore<Exporter, Country>
     public string PersonResponsible { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// The plant address.
     /// </summary>
     public Address PlantAddress { get; set; }

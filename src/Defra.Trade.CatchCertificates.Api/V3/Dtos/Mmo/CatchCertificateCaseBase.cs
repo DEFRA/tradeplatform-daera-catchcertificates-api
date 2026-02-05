@@ -40,6 +40,11 @@ public class CatchCertificateCaseBase : MessageCore<Exporter, Country>
     public bool? MultiVesselSchedule { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// Indicates that an incorrect species has been added to a landing on this certificate
     /// </summary>
     public bool? SpeciesOverriddenByAdmin { get; set; }

@@ -111,6 +111,11 @@ public class CatchCertificateCase
     public int? NumberOfFailedSubmissions { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// Flag to identify applications made by an EACC
     /// </summary>
     /// <example>true</example>

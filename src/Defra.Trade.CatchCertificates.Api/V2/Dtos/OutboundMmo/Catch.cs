@@ -33,6 +33,16 @@ public class Catch
     public double ImportedWeight { get; set; }
 
     /// <summary>
+    /// Name of the country issuing the catch certificate
+    /// </summary>
+    public string IssuingCountry { get; set; }
+
+    /// <summary>
+    /// Gets or sets the description of the product.
+    /// </summary>
+    public string ProductDescription { get; set; }
+
+    /// <summary>
     /// Processed weight in Kg.
     /// </summary>
     /// <example>895</example>
