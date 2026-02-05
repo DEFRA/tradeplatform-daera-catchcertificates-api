@@ -78,7 +78,7 @@ public class Product
     /// <summary>
     /// Description of the product added to the consignment
     /// </summary>
-    public string PproductDescription { get; set; }
+    public string ProductDescription { get; set; }
 
     /// <summary>
     /// reference numbers for any supporting documents when a processing statement is provided as foreign document number

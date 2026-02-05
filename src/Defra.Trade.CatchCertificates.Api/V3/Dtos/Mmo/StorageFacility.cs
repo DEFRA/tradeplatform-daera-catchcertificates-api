@@ -25,5 +25,5 @@ public class StorageFacility
     /// <summary>
     /// Product Handling provided from add-storage-facility-approval
     /// </summary>
-    public string productHandling { get; set; }
+    public string ProductHandling { get; set; }
 }

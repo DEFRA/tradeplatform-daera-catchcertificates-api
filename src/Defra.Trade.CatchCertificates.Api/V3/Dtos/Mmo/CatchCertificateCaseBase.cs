@@ -64,6 +64,4 @@ public class CatchCertificateCaseBase : MessageCore<Exporter, Country>
     /// Indicates that an unlicensed vessel has been added to a landing on this certificate
     /// </summary>
     public bool? VesselOverriddenByAdmin { get; set; }
-
-
 }

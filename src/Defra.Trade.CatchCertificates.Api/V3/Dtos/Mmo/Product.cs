@@ -39,7 +39,6 @@ public class Product
     /// </summary>
     public string IssuingCountry { get; set; }
 
-
     /// <summary>
     /// net weight of product on arrival provided on /add-product-to-this-consignments
     /// </summary>
