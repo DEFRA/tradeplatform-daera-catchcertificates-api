@@ -72,16 +72,13 @@ public class ProductValidatorTests
         result.ShouldHaveValidationErrorFor(x => x.ExportedWeight)
             .WithErrorMessage("'Exported Weight' must not be empty.");
 
-        result.ShouldHaveValidationErrorFor(x => x.DateOfUnloading)
-            .WithErrorMessage("'Date Of Unloading' must not be empty.");
-
-        result.ShouldHaveValidationErrorFor(x => x.TransportUnloadedFrom)
-            .WithErrorMessage("'Transport Unloaded From' must not be empty.");
-
         result.ShouldHaveValidationErrorFor(x => x.Validation)
             .WithErrorMessage("'Validation' must not be empty.");
 
-        result.Errors.Should().HaveCount(9);
+        result.ShouldHaveValidationErrorFor(x => x.IssuingCountry)
+            .WithErrorMessage("'Issuing Country' must not be empty.");
+
+        result.Errors.Should().HaveCount(8);
 
         Mock.Verify(_productValidationValidator);
     }

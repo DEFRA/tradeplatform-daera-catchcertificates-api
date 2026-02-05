@@ -11,6 +11,12 @@ namespace Defra.Trade.CatchCertificates.Api.V3.Dtos.Mmo;
 /// </summary>
 public class StorageDocument : MessageCore<Exporter, Country>
 {
+
+    /// <summary>
+    /// The transport used
+    /// </summary>
+    public Transportation ArrivalTransportation { get; set; }
+
     /// <summary>
     /// The authority.
     /// </summary>
@@ -27,14 +33,19 @@ public class StorageDocument : MessageCore<Exporter, Country>
     public string ExporterId { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// The products.
     /// </summary>
     public IEnumerable<Product> Products { get; set; }
 
     /// <summary>
-    /// The storage facilities.
+    /// The storage facility
     /// </summary>
-    public IEnumerable<StorageFacility> StorageFacilities { get; set; }
+    public StorageFacility StorageFacility { get; set; }
 
     /// <summary>
     /// The transportation.
