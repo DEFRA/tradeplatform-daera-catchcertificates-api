@@ -43,7 +43,7 @@ public class Transportation
     /// </summary>
     public string ExportLocation { get; set; }
 
-    // <summary>
+    /// <summary>
     /// The freight bill number
     /// </summary>
     public string FreightBillNumber { get; set; }
