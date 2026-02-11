@@ -92,6 +92,11 @@ public class StorageDocument
     public int NumberOfFailedSubmissions { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// Product details.
     /// </summary>
     public IEnumerable<Product> Products { get; set; }
