@@ -33,11 +33,6 @@ public class StorageDocument : MessageCore<Exporter, Country>
     public string ExporterId { get; set; }
 
     /// <summary>
-    /// Point of destination as provided by the user.
-    /// </summary>
-    public string PointOfDestination { get; set; }
-
-    /// <summary>
     /// The products.
     /// </summary>
     public IEnumerable<Product> Products { get; set; }
