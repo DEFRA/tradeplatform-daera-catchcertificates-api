@@ -70,4 +70,10 @@ public class Transportation
     /// The registration of the transport
     /// </summary>
     public string Registration { get; set; }
+
+
+    /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
 }

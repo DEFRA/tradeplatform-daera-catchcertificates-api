@@ -72,4 +72,9 @@ public class Transportation
     /// The flag of the transportation
     /// </summary>
     public string Flag { get; set; }
+
+    /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
 }
