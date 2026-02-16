@@ -44,6 +44,11 @@ public class Transportation
     public string ExportLocation { get; set; }
 
     /// <summary>
+    /// The freight bill number
+    /// </summary>
+    public string FreightBillNumber { get; set; }
+
+    /// <summary>
     /// The bill number
     /// </summary>
     public string BillNumber { get; set; }
@@ -67,4 +72,9 @@ public class Transportation
     /// The flag of the transportation
     /// </summary>
     public string Flag { get; set; }
+
+    /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
 }

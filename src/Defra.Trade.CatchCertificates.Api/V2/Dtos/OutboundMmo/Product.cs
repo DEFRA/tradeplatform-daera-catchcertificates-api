@@ -44,9 +44,46 @@ public class Product
     public double ImportedWeight { get; set; }
 
     /// <summary>
+    /// Name of the country issuing the catch certificate
+    /// </summary>
+    public string IssuingCountry { get; set; }
+
+
+    /// <summary>
+    /// net weight of product on arrival provided on /add-product-to-this-consignments
+    /// </summary>
+    public string NetWeightProductArrival { get; set; }
+
+    /// <summary>
+    /// net weight of fishery products on arrival provided on /add-product-to-this-consignments
+    /// </summary>
+
+    public string NetWeightFisheryProductArrival { get; set; }
+
+    /// <summary>
+    /// net weight of product on departure provided on /departure-product-summary
+    /// </summary>
+    public string NetWeightProductDeparture { get; set; }   
+
+    /// <summary>
+    /// net weight of fishery products on departure provided on /departure-product-summary
+    /// </summary>
+    public string NetWeightFisheryProductDeparture { get; set; }
+
+    /// <summary>
     /// The place of unloading.
     /// </summary>
     public string PlaceOfUnloading { get; set; }
+
+    /// <summary>
+    /// Description of the product added to the consignment
+    /// </summary>
+    public string ProductDescription { get; set; }
+
+    /// <summary>
+    /// reference numbers for any supporting documents when a processing statement is provided as foreign document number
+    /// </summary>
+    public string SupportingDocuments { get; set; }
 
     /// <summary>
     /// Scientific name for the catch.

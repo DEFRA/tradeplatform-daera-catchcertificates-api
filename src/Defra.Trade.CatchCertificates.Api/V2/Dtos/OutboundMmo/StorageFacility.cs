@@ -17,4 +17,19 @@ public class StorageFacility
     /// The name of the storage facility
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// Consignments Arrival Date provided from /add-storage-facility-details
+    /// </summary>
+    public string DateOfUnloading { get; set; }
+
+    /// <summary>
+    /// Storage facility approval number provided from add-storage-facility-approval
+    /// </summary>
+    public string ApprovalNumber { get; set; }
+
+    /// <summary>
+    /// Product Handling provided from add-storage-facility-approval
+    /// </summary>
+    public string ProductHandling { get; set; }
 }

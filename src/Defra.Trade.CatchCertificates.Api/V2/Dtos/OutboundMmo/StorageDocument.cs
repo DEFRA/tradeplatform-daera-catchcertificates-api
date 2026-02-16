@@ -8,6 +8,12 @@ namespace Defra.Trade.CatchCertificates.Api.V2.Dtos.OutboundMmo;
 
 public class StorageDocument
 {
+
+    /// <summary>
+    /// The transport used
+    /// </summary>
+    public Transportation ArrivalTransportation { get; set; }
+
     /// <summary>
     /// The authority.
     /// </summary>
@@ -86,6 +92,11 @@ public class StorageDocument
     public int NumberOfFailedSubmissions { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// Product details.
     /// </summary>
     public IEnumerable<Product> Products { get; set; }
@@ -98,7 +109,14 @@ public class StorageDocument
     /// <summary>
     /// The storage facilities.
     /// </summary>
+    /// <remarks>For use with V2 message</remarks> 
     public IEnumerable<StorageFacility> StorageFacilities { get; set; }
+
+    /// <summary>
+    /// The storage facility
+    /// </summary>
+    /// <remarks>For use with V3 message</remarks>
+    public StorageFacility StorageFacility { get; set; }
 
     /// <summary>
     /// The transportation.

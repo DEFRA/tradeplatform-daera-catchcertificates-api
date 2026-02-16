@@ -41,6 +41,11 @@ public class Transportation
     public string FlightNumber { get; set; }
 
     /// <summary>
+    /// The freight bill number
+    /// </summary>
+    public string FreightBillNumber { get; set; }
+
+    /// <summary>
     /// Has road transport document
     /// </summary>
     public bool? HasRoadTransportDocument { get; set; }
@@ -65,4 +70,10 @@ public class Transportation
     /// The registration of the transport
     /// </summary>
     public string Registration { get; set; }
+
+
+    /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
 }

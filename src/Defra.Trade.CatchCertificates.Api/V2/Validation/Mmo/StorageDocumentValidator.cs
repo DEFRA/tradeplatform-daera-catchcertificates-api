@@ -42,6 +42,6 @@ public class StorageDocumentValidator : AbstractValidator<StorageDocument>
 
         RuleFor(x => x.RequestedByAdmin).NotNull();
 
-        RuleFor(x => x.StorageFacilities).NotNull();
+        RuleFor(x => x.StorageFacility).NotNull();
     }
 }

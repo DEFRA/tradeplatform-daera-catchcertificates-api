@@ -95,6 +95,11 @@ public class ProcessingStatement
     public int NumberOfFailedSubmissions { get; set; }
 
     /// <summary>
+    /// Point of destination as provided by the user.
+    /// </summary>
+    public string PointOfDestination { get; set; }
+
+    /// <summary>
     /// Name of the inspector certifying the processing of the catch.
     /// </summary>
     /// <example>Jane Smith</example>
