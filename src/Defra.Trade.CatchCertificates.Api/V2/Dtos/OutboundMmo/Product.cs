@@ -63,7 +63,7 @@ public class Product
     /// <summary>
     /// net weight of product on departure provided on /departure-product-summary
     /// </summary>
-    public string NetWeightProductDeparture { get; set; }   
+    public string NetWeightProductDeparture { get; set; }
 
     /// <summary>
     /// net weight of fishery products on departure provided on /departure-product-summary
