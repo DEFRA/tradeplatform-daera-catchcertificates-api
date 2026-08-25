@@ -1,2 +1,2 @@
 dotnet test --settings coverlet.settings
-EXIT 0
+exit 0
